@@ -44,7 +44,3 @@ embedding-leaderboard-final/
 │   └── llm_judge/       # Pairwise comparison results
 └── data/embeddings/     # Generated embeddings (gitignored)
 ```
-
-## License
-
-MIT
