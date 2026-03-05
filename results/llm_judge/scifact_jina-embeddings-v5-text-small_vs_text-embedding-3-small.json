@@ -1,0 +1,95 @@
+{
+  "dataset": "scifact",
+  "model_a": "jina-embeddings-v5-text-small",
+  "model_b": "text-embedding-3-small",
+  "num_queries": 10,
+  "wins_a": 6,
+  "wins_b": 3,
+  "ties": 1,
+  "win_rate_a": 0.6,
+  "win_rate_b": 0.3,
+  "elo_a": 1607.3095488409472,
+  "elo_b": 1392.6904511590528,
+  "comparisons": [
+    {
+      "query_id": "475",
+      "query": "Glycolysis is one of the primary glycometabolic pathways in cells.",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "237",
+      "query": "Cells lacking clpC have a defect in sporulation efficiency in Bacillus subtilis.",
+      "order_swapped": true,
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "raw_response": "TIE"
+    },
+    {
+      "query_id": "808",
+      "query": "Most termination events in Okazaki fragments are sequence specific.",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "551",
+      "query": "ITAM phosphorylation prevents the transfer of the T cell receptor (TCR) signal from the echo-domain to the cytoplasmic tail of the T cell receptor (TCR).",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "3",
+      "query": "1,000 genomes project enables mapping of genetic sequence variation consisting of rare variants with larger penetrance effects than common variants.",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "216",
+      "query": "CX3CR1 on the Th2 cells impairs T cell survival",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "274",
+      "query": "Combination nicotine replacement therapies with varenicline or bupropion lead to significantly higher long-term abstinence rates at 52 weeks than varenicline monotherapy.",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "784",
+      "query": "MicroRNA is involved in the regulation of Neural Stem Cell (NSC) differentiation and proliferation dynamic homeostasis",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "13",
+      "query": "5% of perinatal mortality is due to low birth weight.",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "1137",
+      "query": "TNFAIP3 is a tumor suppressor in glioblastoma.",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    }
+  ]
+}

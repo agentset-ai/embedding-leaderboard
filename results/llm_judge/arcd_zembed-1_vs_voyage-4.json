@@ -1,0 +1,61 @@
+{
+  "dataset": "arcd",
+  "model_a": "zembed-1",
+  "model_b": "voyage-4",
+  "num_queries": 10,
+  "wins_a": 3,
+  "wins_b": 5,
+  "ties": 2,
+  "comparisons": [
+    {
+      "query_id": "arcd-q558",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q89",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q25",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q203",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q159",
+      "judgment": "TIE",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q142",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q94",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q80",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q429",
+      "judgment": "TIE",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q44",
+      "judgment": "B",
+      "swapped": true
+    }
+  ]
+}

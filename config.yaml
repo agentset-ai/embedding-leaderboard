@@ -1,0 +1,165 @@
+# Embedding Leaderboard Pipeline Configuration
+
+# Datasets to evaluate (7 datasets)
+datasets:
+  - name: "fiqa"
+    base_path: "datasets/fiqa"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "msmarco"
+    base_path: "datasets/msmarco"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "scifact"
+    base_path: "datasets/scifact"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "dbpedia"
+    base_path: "datasets/dbpedia"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "business-reports"
+    base_path: "datasets/business-reports"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "arcd"
+    base_path: "datasets/arcd"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+  - name: "pg"
+    base_path: "datasets/pg"
+    corpus_file: "corpus.jsonl"
+    queries_file: "queries.jsonl"
+    qrels_file: "qrels/test.tsv"
+
+# Embedder models (16 models)
+# Note: 'name' must match model-info.json exactly
+embedders:
+  # OpenAI
+  - name: "text-embedding-3-large"
+    provider: "openai"
+    model: "text-embedding-3-large"
+    api_key_env: "OPENAI_API_KEY"
+
+  - name: "text-embedding-3-small"
+    provider: "openai"
+    model: "text-embedding-3-small"
+    api_key_env: "OPENAI_API_KEY"
+
+  # Google
+  - name: "text-embedding-004"
+    provider: "google"
+    model: "text-embedding-004"
+    api_key_env: "GOOGLE_API_KEY"
+
+  # Voyage AI
+  - name: "voyage-3-large"
+    provider: "voyage"
+    model: "voyage-3-large"
+    api_key_env: "VOYAGE_API_KEY"
+
+  - name: "voyage-3.5"
+    provider: "voyage"
+    model: "voyage-3.5"
+    api_key_env: "VOYAGE_API_KEY"
+
+  - name: "voyage-3.5-lite"
+    provider: "voyage"
+    model: "voyage-3.5-lite"
+    api_key_env: "VOYAGE_API_KEY"
+
+  - name: "voyage-4"
+    provider: "voyage"
+    model: "voyage-4"
+    api_key_env: "VOYAGE_API_KEY"
+
+  # Cohere
+  - name: "cohere-embed-v3"
+    provider: "cohere"
+    model: "embed-english-v3.0"
+    api_key_env: "COHERE_API_KEY"
+
+  - name: "cohere-embed-multilingual-v3"
+    provider: "cohere"
+    model: "embed-multilingual-v3.0"
+    api_key_env: "COHERE_API_KEY"
+
+  # Jina AI
+  - name: "jina-embeddings-v3"
+    provider: "jina"
+    model: "jina-embeddings-v3"
+    api_key_env: "JINA_API_KEY"
+
+  - name: "jina-embeddings-v5-text-small"
+    provider: "jina"
+    model: "jina-embeddings-v5-text-small"
+    api_key_env: "JINA_API_KEY"
+
+  # DeepInfra (Qwen3 and BGE)
+  - name: "qwen3-embedding-8b"
+    provider: "deepinfra"
+    model: "Alibaba-NLP/gte-Qwen2-7B-instruct"
+    api_key_env: "DEEPINFRA_API_KEY"
+
+  - name: "qwen3-embedding-4b"
+    provider: "deepinfra"
+    model: "Alibaba-NLP/gte-Qwen2-4B-instruct"
+    api_key_env: "DEEPINFRA_API_KEY"
+
+  - name: "qwen3-embedding-0.6b"
+    provider: "deepinfra"
+    model: "Alibaba-NLP/gte-Qwen2-0.5B-instruct"
+    api_key_env: "DEEPINFRA_API_KEY"
+
+  - name: "bge-m3"
+    provider: "deepinfra"
+    model: "BAAI/bge-m3"
+    api_key_env: "DEEPINFRA_API_KEY"
+
+  # ZeroEntropy
+  - name: "zembed-1"
+    provider: "zeroentropy"
+    model: "zembed-1"
+    api_key_env: "ZEMBED_API_KEY"
+
+# Evaluation configuration
+evaluation:
+  k_values: [5, 10]
+  metrics: ["ndcg", "recall"]
+  generate_plots: true
+
+# LLM Judge configuration
+llm_judge:
+  enabled: true
+  provider: "azure_openai"
+  azure_api_key_env: "AZURE_API_KEY"
+  azure_resource_name_env: "AZURE_RESOURCE_NAME"
+  azure_deployment_id_env: "AZURE_DEPLOYMENT_ID"
+  num_queries: 10
+  top_k: 5
+  elo:
+    initial_rating: 1500
+    k_factor: 32
+  prompt:
+    truncate_doc_length: 200
+
+# Pipeline execution settings
+pipeline:
+  stages:
+    - embed
+    - evaluate
+    - llm_judge
+    - visualize
+  skip_if_exists: true

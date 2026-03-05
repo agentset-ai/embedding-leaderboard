@@ -1,0 +1,14 @@
+{
+  "dataset": "arcd",
+  "model_a": "voyage-3-large",
+  "model_b": "jina-embeddings-v5-text-small",
+  "num_queries": 10,
+  "wins_a": 0,
+  "wins_b": 0,
+  "ties": 0,
+  "win_rate_a": 0,
+  "win_rate_b": 0,
+  "elo_a": 1500.0,
+  "elo_b": 1500.0,
+  "comparisons": []
+}

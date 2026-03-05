@@ -1,0 +1,61 @@
+{
+  "dataset": "pg",
+  "model_a": "zembed-1",
+  "model_b": "voyage-4",
+  "num_queries": 10,
+  "wins_a": 5,
+  "wins_b": 4,
+  "ties": 1,
+  "comparisons": [
+    {
+      "query_id": "q41",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "q8",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "q2",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "q18",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "q16",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "q15",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "q9",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "q7",
+      "judgment": "TIE",
+      "swapped": false
+    },
+    {
+      "query_id": "q35",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "q6",
+      "judgment": "B",
+      "swapped": true
+    }
+  ]
+}

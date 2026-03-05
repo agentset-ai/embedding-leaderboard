@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How We Benchmark Embedding Models | Agentset</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #fff;
+            color: #1a1a1a;
+            line-height: 1.75;
+            font-size: 17px;
+        }
+        .nav {
+            padding: 20px 40px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #000;
+            text-decoration: none;
+        }
+        .nav-links a {
+            margin-left: 30px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .article {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px 100px;
+        }
+        .meta {
+            margin-bottom: 30px;
+        }
+        .date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .tags {
+            margin-top: 12px;
+        }
+        .tag {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #4b5563;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #000;
+        }
+        .author {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .author-name {
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        .author-title {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 50px 0 20px;
+            color: #000;
+        }
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 35px 0 15px;
+            color: #1a1a1a;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .pipeline-diagram {
+            background: #0f0f0f;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        .pipeline-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .pipeline-step {
+            background: #1f2937;
+            border-radius: 8px;
+            padding: 16px 24px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .pipeline-step.active {
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+        }
+        .pipeline-arrow {
+            color: #4b5563;
+            font-size: 1.5rem;
+        }
+        .code-block {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .code-block code {
+            color: #d4d4d4;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .code-block .comment { color: #6a9955; }
+        .code-block .string { color: #ce9178; }
+        .code-block .keyword { color: #569cd6; }
+        .code-block .function { color: #dcdcaa; }
+        .code-block .number { color: #b5cea8; }
+        .file-path {
+            background: #f3f4f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85em;
+            color: #7c3aed;
+        }
+        .step-box {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin: 30px 0;
+            border-left: 4px solid #7c3aed;
+        }
+        .step-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #7c3aed;
+        }
+        .step-box p {
+            margin-bottom: 12px;
+        }
+        .step-box p:last-child {
+            margin-bottom: 0;
+        }
+        .callout {
+            background: #faf5ff;
+            border-left: 4px solid #7c3aed;
+            padding: 20px 24px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .callout p {
+            margin: 0;
+            color: #4a4a4a;
+        }
+        .callout.warning {
+            background: #fef3c7;
+            border-left-color: #d97706;
+        }
+        .callout.info {
+            background: #eff6ff;
+            border-left-color: #3b82f6;
+        }
+        .file-tree {
+            background: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.85rem;
+            color: #d4d4d4;
+            line-height: 1.8;
+        }
+        .file-tree .folder { color: #569cd6; }
+        .file-tree .file { color: #d4d4d4; }
+        .file-tree .highlight { color: #dcdcaa; }
+        ul, ol {
+            margin: 20px 0 20px 24px;
+            color: #333;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+        .config-table th {
+            text-align: left;
+            padding: 12px 16px;
+            background: #f9fafb;
+            border-bottom: 2px solid #e5e7eb;
+            font-weight: 600;
+            color: #4b5563;
+        }
+        .config-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            color: #374151;
+        }
+        .config-table code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 30px 0;
+        }
+        .summary-card {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .summary-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #7c3aed;
+        }
+        .summary-card .label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 4px;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+        a {
+            color: #7c3aed;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="#" class="logo">Agentset</a>
+        <div class="nav-links">
+            <a href="#">Product</a>
+            <a href="#">Docs</a>
+            <a href="#">Blog</a>
+            <a href="#">Pricing</a>
+        </div>
+    </nav>
+
+    <article class="article">
+        <div class="meta">
+            <div class="date">Wednesday, March 5, 2026</div>
+            <div class="tags">
+                <span class="tag">Engineering</span>
+                <span class="tag">Embedding</span>
+                <span class="tag">Open Source</span>
+            </div>
+        </div>
+
+        <h1>How We Benchmark Embedding Models</h1>
+
+        <div class="author">
+            <div class="author-avatar">UM</div>
+            <div>
+                <div class="author-name">Umida Muratbekova</div>
+                <div class="author-title">Founder, Agentset</div>
+            </div>
+        </div>
+
+        <p>
+            We've been running an embedding model leaderboard for a while now. People keep asking how it works and how to add their own models. This post explains the whole pipeline—from raw text to Elo rankings.
+        </p>
+
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="number">16</div>
+                <div class="label">Models</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">7</div>
+                <div class="label">Datasets</div>
+            </div>
+            <div class="summary-card">
+                <div class="number">~3000</div>
+                <div class="label">Judgments</div>
+            </div>
+        </div>
+
+        <h2>The Pipeline</h2>
+
+        <p>
+            The evaluation runs in three stages. Each stage is independent—you can re-run any stage without affecting the others.
+        </p>
+
+        <div class="pipeline-diagram">
+            <div class="pipeline-steps">
+                <div class="pipeline-step">1. Embed</div>
+                <span class="pipeline-arrow">→</span>
+                <div class="pipeline-step">2. Evaluate</div>
+                <span class="pipeline-arrow">→</span>
+                <div class="pipeline-step active">3. LLM Judge</div>
+                <span class="pipeline-arrow">→</span>
+                <div class="pipeline-step">Elo Rankings</div>
+            </div>
+        </div>
+
+        <h3>Stage 1: Embed</h3>
+        <p>
+            We generate embeddings for every document and query in each dataset. This is the expensive part—API calls to 16 different embedding providers.
+        </p>
+        <p>
+            Each model gets two files per dataset: <span class="file-path">corpus_{model}.npy</span> and <span class="file-path">queries_{model}.npy</span>. We store these as NumPy arrays because they're large (millions of floats) and we need fast cosine similarity later.
+        </p>
+
+        <div class="callout info">
+            <p>
+                <strong>L2 Normalization:</strong> All embeddings are L2-normalized before saving. This lets us use dot product instead of cosine similarity, which is faster.
+            </p>
+        </div>
+
+        <h3>Stage 2: Evaluate</h3>
+        <p>
+            For each query, we retrieve the top-k documents using cosine similarity and compute standard IR metrics:
+        </p>
+        <ul>
+            <li><strong>NDCG@10</strong> — Normalized Discounted Cumulative Gain. Measures ranking quality.</li>
+            <li><strong>Recall@10</strong> — What fraction of relevant documents appear in top 10.</li>
+        </ul>
+        <p>
+            These metrics require ground truth labels (qrels). Not every dataset has them, so some datasets only get LLM judge evaluation.
+        </p>
+
+        <h3>Stage 3: LLM Judge</h3>
+        <p>
+            This is where it gets interesting. We use GPT-5 to compare search results from two models head-to-head.
+        </p>
+        <p>
+            For each query, we show the judge the top-5 results from Model A and Model B. The judge picks which ranking is more relevant: A, B, or TIE.
+        </p>
+
+        <div class="code-block">
+<code><span class="keyword">Given a query and two search result lists, which is more relevant?</span>
+
+<span class="string">Query: "What is the best way to invest in index funds?"</span>
+
+<span class="comment">Ranking A:</span>
+1. Index funds are a type of mutual fund that tracks...
+2. The best index funds for beginners include...
+3. Vanguard's Total Stock Market Index Fund...
+
+<span class="comment">Ranking B:</span>
+1. Investing in stocks requires careful analysis...
+2. Index funds provide broad market exposure...
+3. The S&P 500 has historically returned...
+
+<span class="keyword">Answer: A, B, or TIE.</span></code>
+        </div>
+
+        <div class="callout warning">
+            <p>
+                <strong>Position Bias:</strong> LLMs tend to favor the first option they see. We randomly swap A/B positions and track which was which, then map the judgment back to the actual models.
+            </p>
+        </div>
+
+        <h3>Elo Calculation</h3>
+        <p>
+            We convert win/loss/tie records into Elo ratings using the standard formula:
+        </p>
+        <ul>
+            <li>Every model starts at <strong>1500</strong></li>
+            <li>K-factor of <strong>32</strong> (how much ratings change per game)</li>
+            <li>Ties count as <strong>0.5 wins</strong> for each side</li>
+            <li>We run <strong>10 iterative passes</strong> to stabilize ratings</li>
+        </ul>
+        <p>
+            The nice thing about Elo is that it's transitive. If Model A beats B, and B beats C, then A should beat C—and the ratings reflect that even if A and C never played directly.
+        </p>
+
+        <h2>Repository Structure</h2>
+
+        <div class="file-tree">
+<span class="folder">embedding-leaderboard/</span>
+├── <span class="folder">pipeline/</span>
+│   ├── <span class="file">__main__.py</span>          <span class="comment"># Entry point</span>
+│   ├── <span class="file">config.py</span>            <span class="comment"># Load config.yaml</span>
+│   ├── <span class="highlight">add_model.py</span>         <span class="comment"># Add new model script</span>
+│   └── <span class="folder">stages/</span>
+│       ├── <span class="file">embed.py</span>         <span class="comment"># Embedding clients</span>
+│       ├── <span class="file">evaluate.py</span>      <span class="comment"># NDCG/Recall</span>
+│       └── <span class="file">llm_judge.py</span>     <span class="comment"># Pairwise comparisons</span>
+├── <span class="folder">datasets/</span>
+│   ├── <span class="folder">fiqa/</span>                <span class="comment"># Financial QA</span>
+│   ├── <span class="folder">msmarco/</span>             <span class="comment"># Web search</span>
+│   ├── <span class="folder">scifact/</span>             <span class="comment"># Scientific claims</span>
+│   └── <span class="file">...</span>
+├── <span class="folder">results/</span>
+│   ├── <span class="highlight">benchmarks.json</span>      <span class="comment"># All results</span>
+│   ├── <span class="file">model-info.json</span>      <span class="comment"># Model metadata</span>
+│   └── <span class="folder">llm_judge/</span>           <span class="comment"># Pairwise results</span>
+├── <span class="file">config.yaml</span>              <span class="comment"># Model configs</span>
+└── <span class="file">.env</span>                     <span class="comment"># API keys</span>
+        </div>
+
+        <h2>Adding a New Model</h2>
+
+        <p>
+            Want to add your model to the leaderboard? Four steps.
+        </p>
+
+        <div class="step-box">
+            <h4>Step 1: Add to model-info.json</h4>
+            <p>
+                This file contains metadata about each model. Add an entry with the model's name, provider, dimensions, and any other relevant info.
+            </p>
+        </div>
+
+        <div class="code-block">
+<code><span class="comment">// results/model-info.json</span>
+{
+  <span class="string">"name"</span>: <span class="string">"your-model-name"</span>,
+  <span class="string">"display_name"</span>: <span class="string">"Your Model Display Name"</span>,
+  <span class="string">"provider"</span>: <span class="string">"YourCompany"</span>,
+  <span class="string">"license"</span>: <span class="string">"Proprietary"</span>,
+  <span class="string">"cost_per_1m_tokens"</span>: <span class="number">0.10</span>,
+  <span class="string">"dimension"</span>: <span class="number">1024</span>,
+  <span class="string">"about_model"</span>: <span class="string">"Brief description of the model."</span>
+}</code>
+        </div>
+
+        <div class="step-box">
+            <h4>Step 2: Add embedding client</h4>
+            <p>
+                If your model uses a new API (not OpenAI, Voyage, Cohere, etc.), add a client class to <span class="file-path">pipeline/stages/embed.py</span>.
+            </p>
+        </div>
+
+        <div class="code-block">
+<code><span class="keyword">class</span> <span class="function">YourModelClient</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, api_key: str, model_name: str):
+        self.api_key = api_key
+        self.model_name = model_name
+        self.api_url = <span class="string">"https://api.yourcompany.com/embed"</span>
+
+    <span class="keyword">def</span> <span class="function">embed_corpus</span>(self, texts: List[str], batch_size: int = <span class="number">64</span>) -> np.ndarray:
+        embeddings = []
+        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(texts), batch_size):
+            batch = texts[i:i + batch_size]
+            response = requests.post(
+                self.api_url,
+                headers={<span class="string">"Authorization"</span>: f<span class="string">"Bearer {self.api_key}"</span>},
+                json={<span class="string">"input"</span>: batch, <span class="string">"model"</span>: self.model_name}
+            )
+            data = response.json()
+            embeddings.extend(data[<span class="string">"embeddings"</span>])
+        <span class="keyword">return</span> np.array(embeddings)
+
+    <span class="keyword">def</span> <span class="function">embed_queries</span>(self, texts: List[str], batch_size: int = <span class="number">64</span>) -> np.ndarray:
+        <span class="comment"># Same as embed_corpus, or use input_type="query" if supported</span>
+        <span class="keyword">return</span> self.embed_corpus(texts, batch_size)</code>
+        </div>
+
+        <div class="step-box">
+            <h4>Step 3: Add to config.yaml</h4>
+            <p>
+                Register the model in the config file so the pipeline knows how to instantiate it.
+            </p>
+        </div>
+
+        <div class="code-block">
+<code><span class="comment"># config.yaml</span>
+<span class="keyword">embedders</span>:
+  - <span class="string">name</span>: <span class="string">"your-model-name"</span>
+    <span class="string">provider</span>: <span class="string">"yourcompany"</span>
+    <span class="string">model</span>: <span class="string">"your-model-v1"</span>
+    <span class="string">api_key_env</span>: <span class="string">"YOUR_API_KEY"</span></code>
+        </div>
+
+        <div class="step-box">
+            <h4>Step 4: Run the pipeline</h4>
+            <p>
+                Set your API key and run the add_model script. It handles everything: generating embeddings, running evaluations, computing Elo.
+            </p>
+        </div>
+
+        <div class="code-block">
+<code><span class="comment"># Set your API key</span>
+<span class="keyword">export</span> YOUR_API_KEY=<span class="string">"sk-..."</span>
+
+<span class="comment"># Run the pipeline for your model</span>
+python pipeline/add_model.py --model your-model-name</code>
+        </div>
+
+        <p>
+            The script will:
+        </p>
+        <ol>
+            <li>Generate embeddings for all 7 datasets</li>
+            <li>Calculate NDCG and Recall metrics</li>
+            <li>Run LLM judge comparisons against all existing models</li>
+            <li>Recompute Elo rankings</li>
+            <li>Update <span class="file-path">benchmarks.json</span></li>
+        </ol>
+
+        <h2>Configuration Reference</h2>
+
+        <table class="config-table">
+            <thead>
+                <tr>
+                    <th>Setting</th>
+                    <th>Value</th>
+                    <th>Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Queries per comparison</td>
+                    <td><code>10</code></td>
+                    <td>Balance between cost and statistical significance</td>
+                </tr>
+                <tr>
+                    <td>Top-k for judge</td>
+                    <td><code>5</code></td>
+                    <td>Enough to see ranking quality without overwhelming the judge</td>
+                </tr>
+                <tr>
+                    <td>Document truncation</td>
+                    <td><code>200 chars</code></td>
+                    <td>Keep judge prompts under token limits</td>
+                </tr>
+                <tr>
+                    <td>Judge max_tokens</td>
+                    <td><code>10</code></td>
+                    <td>Force short responses (A, B, or TIE)</td>
+                </tr>
+                <tr>
+                    <td>Elo K-factor</td>
+                    <td><code>32</code></td>
+                    <td>Standard chess rating sensitivity</td>
+                </tr>
+                <tr>
+                    <td>Elo initial</td>
+                    <td><code>1500</code></td>
+                    <td>Standard starting point</td>
+                </tr>
+                <tr>
+                    <td>Elo iterations</td>
+                    <td><code>10</code></td>
+                    <td>Enough passes for ratings to converge</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>The Datasets</h2>
+
+        <table class="config-table">
+            <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Domain</th>
+                    <th>Corpus Size</th>
+                    <th>Queries</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>FiQA</td>
+                    <td>Financial QA</td>
+                    <td>5,000</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>MSMARCO</td>
+                    <td>Web search</td>
+                    <td>5,000</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>SciFact</td>
+                    <td>Scientific claims</td>
+                    <td>5,000</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>DBPedia</td>
+                    <td>Entity retrieval</td>
+                    <td>5,000</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Business Reports*</td>
+                    <td>Long documents</td>
+                    <td>671</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>ARCD</td>
+                    <td>Arabic QA</td>
+                    <td>5,000</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>PG*</td>
+                    <td>General text</td>
+                    <td>2,043</td>
+                    <td>50</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.85rem; color: #888; margin-top: -10px;">
+            *Business Reports and PG don't have human-annotated qrels. NDCG/Recall not calculated for these datasets.
+        </p>
+
+        <h2>Environment Variables</h2>
+
+        <p>
+            API keys are loaded from <span class="file-path">.env</span>. Here's what you need:
+        </p>
+
+        <div class="code-block">
+<code><span class="comment"># Embedding providers</span>
+OPENAI_API_KEY=sk-...
+VOYAGE_API_KEY=pa-...
+COHERE_API_KEY=...
+JINA_API_KEY=jina_...
+GOOGLE_API_KEY=...
+DEEPINFRA_API_KEY=...
+ZEMBED_API_KEY=ze_...
+
+<span class="comment"># LLM Judge (Azure OpenAI)</span>
+AZURE_API_KEY=...
+AZURE_RESOURCE_NAME=https://your-resource.openai.azure.com/openai/v1/
+AZURE_DEPLOYMENT_ID=gpt-5</code>
+        </div>
+
+        <div class="callout">
+            <p>
+                <strong>Cost estimate:</strong> Adding a new model costs roughly $5-15 in embedding API calls (depending on the provider) plus $10-20 in LLM judge calls for ~1000 comparisons.
+            </p>
+        </div>
+
+        <h2>Reusing Judgments</h2>
+
+        <p>
+            LLM judge results are cached in <span class="file-path">results/llm_judge/</span>. Each comparison gets its own file:
+        </p>
+
+        <div class="code-block">
+<code>fiqa_voyage-4_vs_text-embedding-3-large.json
+msmarco_zembed-1_vs_voyage-4.json
+...</code>
+        </div>
+
+        <p>
+            If a judgment file exists, the pipeline skips that comparison. This means:
+        </p>
+        <ul>
+            <li>Re-running is cheap—only new comparisons are computed</li>
+            <li>Results are reproducible—same judgments, same Elo</li>
+            <li>You can manually inspect or edit individual comparisons</li>
+        </ul>
+
+        <div class="callout warning">
+            <p>
+                <strong>Never regenerate existing judgments.</strong> The whole point of caching is consistency. If you re-run a comparison, you might get different results due to LLM randomness, which would make historical comparisons invalid.
+            </p>
+        </div>
+
+        <h2>The Bottom Line</h2>
+
+        <p>
+            The pipeline is designed to be modular and extensible. Add a client, update the config, run the script. The hard part is already done—the evaluation framework, the judge prompts, the Elo calculation.
+        </p>
+        <p>
+            If you add a model and get interesting results, let us know. We're always looking for new models to benchmark.
+        </p>
+
+        <div class="code-block">
+<code><span class="comment"># Quick start</span>
+git clone https://github.com/agentset/embedding-leaderboard
+cd embedding-leaderboard
+cp .env.example .env
+<span class="comment"># Edit .env with your API keys</span>
+python pipeline/add_model.py --model your-model</code>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <p>Agentset &bull; RAG Infrastructure for Production</p>
+    </footer>
+</body>
+</html>

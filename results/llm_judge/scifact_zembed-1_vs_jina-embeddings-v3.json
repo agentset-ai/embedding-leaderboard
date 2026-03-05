@@ -1,0 +1,61 @@
+{
+  "dataset": "scifact",
+  "model_a": "zembed-1",
+  "model_b": "jina-embeddings-v3",
+  "num_queries": 10,
+  "wins_a": 9,
+  "wins_b": 1,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "475",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "237",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "808",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "551",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "3",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "216",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "274",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "784",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "13",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "1137",
+      "judgment": "A",
+      "swapped": true
+    }
+  ]
+}

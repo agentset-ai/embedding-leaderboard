@@ -1,0 +1,61 @@
+{
+  "dataset": "msmarco",
+  "model_a": "zembed-1",
+  "model_b": "voyage-3.5-lite",
+  "num_queries": 10,
+  "wins_a": 4,
+  "wins_b": 5,
+  "ties": 1,
+  "comparisons": [
+    {
+      "query_id": "1124210",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "146187",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "47923",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "443396",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "359349",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "264014",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "148538",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "131843",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "1114646",
+      "judgment": "TIE",
+      "swapped": true
+    },
+    {
+      "query_id": "130510",
+      "judgment": "B",
+      "swapped": true
+    }
+  ]
+}

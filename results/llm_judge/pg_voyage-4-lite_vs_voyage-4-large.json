@@ -1,0 +1,95 @@
+{
+  "dataset": "pg",
+  "model_a": "voyage-4-lite",
+  "model_b": "voyage-4-large",
+  "num_queries": 10,
+  "wins_a": 6,
+  "wins_b": 4,
+  "ties": 0,
+  "win_rate_a": 0.6,
+  "win_rate_b": 0.4,
+  "elo_a": 1570.292039753023,
+  "elo_b": 1429.707960246977,
+  "comparisons": [
+    {
+      "query_id": "q41",
+      "query": "What makes a startup defensible against competitors?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q8",
+      "query": "How to find good co-founders?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q2",
+      "query": "How to get rich?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q18",
+      "query": "How to handle disagreement and contrarian thinking?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q16",
+      "query": "How can you identify ambitious people?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q15",
+      "query": "What does Paul Graham think about college and education?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q9",
+      "query": "What makes a good startup idea?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q7",
+      "query": "What is the difference between wealth and money?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q35",
+      "query": "What advice does Paul Graham give about dealing with investors?",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q6",
+      "query": "How to deal with rejection and failure?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "dataset": "msmarco",
+  "model_a": "qwen3-embedding-4b",
+  "model_b": "text-embedding-3-large",
+  "num_queries": 10,
+  "wins_a": 4,
+  "wins_b": 5,
+  "ties": 1,
+  "win_rate_a": 0.4,
+  "win_rate_b": 0.5,
+  "elo_a": 1489.2352855270854,
+  "elo_b": 1510.7647144729146,
+  "comparisons": [
+    {
+      "query_id": "1124210",
+      "query": "tracheids are part of _____.",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "146187",
+      "query": "difference between a mcdouble and a double cheeseburger",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "47923",
+      "query": "axon terminals or synaptic knob definition",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "443396",
+      "query": "lps laws definition",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "359349",
+      "query": "how to find the midsegment of a trapezoid",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "264014",
+      "query": "how long is life cycle of flea",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "148538",
+      "query": "difference between rn and bsn",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "131843",
+      "query": "definition of a sigmet",
+      "order_swapped": false,
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "raw_response": "TIE"
+    },
+    {
+      "query_id": "1114646",
+      "query": "what is famvir prescribed for",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "130510",
+      "query": "definition declaratory judgment",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    }
+  ]
+}

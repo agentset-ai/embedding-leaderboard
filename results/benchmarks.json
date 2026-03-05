@@ -1,0 +1,3216 @@
+[
+  {
+    "name": "ZeroEntropy zembed-1",
+    "overall": {
+      "elo": 1587.65,
+      "elo_std": 0.0,
+      "wins": 548,
+      "losses": 298,
+      "ties": 84,
+      "win_rate": 0.589247311827957,
+      "total_judgments": 930,
+      "avg_latency_ms": 278.93,
+      "avg_ndcg_10": 0.8502,
+      "avg_recall_10": 0.4922
+    },
+    "by_dataset": {
+      "FiQa": {
+        "ndcg@5": 0.8617,
+        "ndcg@10": 0.8545,
+        "recall@5": 0.6672,
+        "recall@10": 0.7114
+      },
+      "MSMARCO": {
+        "ndcg@5": 0.9549,
+        "ndcg@10": 0.9465,
+        "recall@5": 0.1235,
+        "recall@10": 0.2237
+      },
+      "SciFact": {
+        "ndcg@5": 0.7719,
+        "ndcg@10": 0.7812,
+        "recall@5": 0.89,
+        "recall@10": 0.93
+      },
+      "DBPedia": {
+        "ndcg@5": 0.8321,
+        "ndcg@10": 0.8106,
+        "recall@5": 0.0621,
+        "recall@10": 0.1208
+      },
+      "business_reports": null,
+      "ARCD": {
+        "ndcg@5": 0.8509,
+        "ndcg@10": 0.8581,
+        "recall@5": 0.92,
+        "recall@10": 0.94
+      }
+    },
+    "comparisons": {
+      "voyage-4": {
+        "wins": 32,
+        "losses": 28,
+        "ties": 10,
+        "total": 70
+      },
+      "text-embedding-3-large": {
+        "wins": 27,
+        "losses": 27,
+        "ties": 6,
+        "total": 60
+      },
+      "voyage-3-large": {
+        "wins": 35,
+        "losses": 27,
+        "ties": 8,
+        "total": 70
+      },
+      "qwen3-embedding-8b": {
+        "wins": 34,
+        "losses": 21,
+        "ties": 5,
+        "total": 60
+      },
+      "voyage-3.5": {
+        "wins": 34,
+        "losses": 21,
+        "ties": 5,
+        "total": 60
+      },
+      "text-embedding-3-small": {
+        "wins": 36,
+        "losses": 17,
+        "ties": 7,
+        "total": 60
+      },
+      "voyage-3.5-lite": {
+        "wins": 39,
+        "losses": 18,
+        "ties": 3,
+        "total": 60
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 36,
+        "losses": 20,
+        "ties": 4,
+        "total": 60
+      },
+      "qwen3-embedding-4b": {
+        "wins": 32,
+        "losses": 20,
+        "ties": 8,
+        "total": 60
+      },
+      "jina-embeddings-v3": {
+        "wins": 40,
+        "losses": 14,
+        "ties": 6,
+        "total": 60
+      },
+      "bge-m3": {
+        "wins": 35,
+        "losses": 22,
+        "ties": 3,
+        "total": 60
+      },
+      "cohere-embed-v3": {
+        "wins": 40,
+        "losses": 13,
+        "ties": 7,
+        "total": 60
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 43,
+        "losses": 15,
+        "ties": 2,
+        "total": 60
+      },
+      "text-embedding-004": {
+        "wins": 48,
+        "losses": 7,
+        "ties": 5,
+        "total": 60
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 37,
+        "losses": 28,
+        "ties": 5,
+        "total": 70
+      }
+    }
+  },
+  {
+    "name": "Openai Text Embedding 3 Large",
+    "overall": {
+      "elo": 1569.31,
+      "elo_std": 12.5,
+      "wins": 986,
+      "losses": 526,
+      "ties": 165,
+      "win_rate": 0.5571,
+      "total_judgments": 0,
+      "avg_latency_ms": 10.39,
+      "avg_ndcg_10": 0.81053
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1528.92,
+        "elo_std": 13.75,
+        "wins": 138,
+        "losses": 82,
+        "ties": 17,
+        "win_rate": 0.5823,
+        "metrics": {
+          "ndcg@5": 0.6478010435421124,
+          "ndcg@10": 0.6411922058985838,
+          "recall@5": 0.2548162119108814,
+          "recall@10": 0.377094439085277
+        },
+        "latency": {
+          "mean_ms": 8.22,
+          "p50_ms": 8.22,
+          "p90_ms": 9.05
+        }
+      },
+      "FiQa": {
+        "elo": 1561.74,
+        "elo_std": 13.75,
+        "wins": 166,
+        "losses": 67,
+        "ties": 7,
+        "win_rate": 0.6917,
+        "metrics": {
+          "ndcg@5": 0.7296267982318958,
+          "ndcg@10": 0.7516603005392994,
+          "recall@5": 0.699595238095238,
+          "recall@10": 0.7809761904761905
+        },
+        "latency": {
+          "mean_ms": 9.6,
+          "p50_ms": 9.6,
+          "p90_ms": 10.56
+        }
+      },
+      "SciFact": {
+        "elo": 1542.64,
+        "elo_std": 13.75,
+        "wins": 150,
+        "losses": 84,
+        "ties": 6,
+        "win_rate": 0.625,
+        "metrics": {
+          "ndcg@5": 0.726460797184817,
+          "ndcg@10": 0.7607049720004163,
+          "recall@5": 0.7683333333333333,
+          "recall@10": 0.8633333333333333
+        },
+        "latency": {
+          "mean_ms": 10.97,
+          "p50_ms": 10.97,
+          "p90_ms": 12.07
+        }
+      },
+      "MSMARCO": {
+        "elo": 1528.81,
+        "elo_std": 13.75,
+        "wins": 118,
+        "losses": 71,
+        "ties": 51,
+        "win_rate": 0.4917,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.2236594361199643
+        },
+        "latency": {
+          "mean_ms": 8.09,
+          "p50_ms": 8.09,
+          "p90_ms": 8.9
+        }
+      },
+      "ARCD": {
+        "elo": 1541.56,
+        "elo_std": 13.75,
+        "wins": 118,
+        "losses": 58,
+        "ties": 64,
+        "win_rate": 0.4917,
+        "metrics": {
+          "ndcg@5": 0.8990879114471845,
+          "ndcg@10": 0.8990879114471845,
+          "recall@5": 0.94,
+          "recall@10": 0.94
+        },
+        "latency": {
+          "mean_ms": 15.1,
+          "p50_ms": 15.1,
+          "p90_ms": 16.61
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 101,
+        "losses": 41,
+        "ties": 18,
+        "total": 160,
+        "win_rate": 0.6312
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 84,
+        "losses": 43,
+        "ties": 33,
+        "total": 160,
+        "win_rate": 0.525
+      },
+      "cohere-embed-v3": {
+        "wins": 93,
+        "losses": 45,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.5813
+      },
+      "text-embedding-004": {
+        "wins": 118,
+        "losses": 28,
+        "ties": 13,
+        "total": 159,
+        "win_rate": 0.7421
+      },
+      "jina-embeddings-v3": {
+        "wins": 88,
+        "losses": 52,
+        "ties": 20,
+        "total": 160,
+        "win_rate": 0.55
+      },
+      "text-embedding-3-small": {
+        "wins": 82,
+        "losses": 49,
+        "ties": 29,
+        "total": 160,
+        "win_rate": 0.5125
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 96,
+        "losses": 45,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.6
+      },
+      "qwen3-embedding-4b": {
+        "wins": 90,
+        "losses": 49,
+        "ties": 20,
+        "total": 159,
+        "win_rate": 0.566
+      },
+      "qwen3-embedding-8b": {
+        "wins": 86,
+        "losses": 49,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.5375
+      },
+      "voyage-3.5": {
+        "wins": 78,
+        "losses": 63,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.4875
+      },
+      "voyage-3.5-lite": {
+        "wins": 87,
+        "losses": 50,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.5437
+      },
+      "voyage-3-large": {
+        "wins": 65,
+        "losses": 57,
+        "ties": 37,
+        "total": 159,
+        "win_rate": 0.4088
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 26,
+        "losses": 27,
+        "ties": 7,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Jina Embeddings V5 Text Small",
+    "overall": {
+      "elo": 1562.95,
+      "elo_std": 0.0,
+      "wins": 678,
+      "losses": 469,
+      "ties": 113,
+      "win_rate": 0.5381,
+      "total_judgments": 1260,
+      "avg_latency_ms": 288.8,
+      "avg_ndcg_10": 0.7096
+    },
+    "by_dataset": {
+      "FiQa": {
+        "wins": 115,
+        "losses": 71,
+        "ties": 4,
+        "total": 190,
+        "metrics": {
+          "ndcg@5": 0.8376655725013689,
+          "recall@5": 0.6772619047619046,
+          "ndcg@10": 0.831008840248259,
+          "recall@10": 0.7714285714285714
+        },
+        "latency": {
+          "mean_ms": 300.2,
+          "p50_ms": 300.2,
+          "p90_ms": 330.21
+        },
+        "elo": 1581.78,
+        "elo_std": 0.0,
+        "win_rate": 0.6053
+      },
+      "MSMARCO": {
+        "wins": 93,
+        "losses": 76,
+        "ties": 31,
+        "total": 200,
+        "metrics": {
+          "ndcg@5": 0.960209447216534,
+          "recall@5": 0.12197471382309297,
+          "ndcg@10": 0.9539455176776399,
+          "recall@10": 0.2189047049270446
+        },
+        "latency": {
+          "mean_ms": 273.27,
+          "p50_ms": 273.27,
+          "p90_ms": 300.59
+        },
+        "elo": 1529.54,
+        "elo_std": 0.0,
+        "win_rate": 0.465
+      },
+      "SciFact": {
+        "wins": 121,
+        "losses": 71,
+        "ties": 8,
+        "total": 200,
+        "metrics": {
+          "ndcg@5": 0.7026332454099807,
+          "recall@5": 0.7891156462585034,
+          "ndcg@10": 0.7344078020620287,
+          "recall@10": 0.8979591836734694
+        },
+        "latency": {
+          "mean_ms": 267.29,
+          "p50_ms": 267.29,
+          "p90_ms": 294.02
+        },
+        "elo": 1588.55,
+        "elo_std": 0.0,
+        "win_rate": 0.605
+      },
+      "DBPedia": {
+        "wins": 81,
+        "losses": 97,
+        "ties": 22,
+        "total": 200,
+        "metrics": {
+          "ndcg@5": 0.8225407180841625,
+          "recall@5": 0.06173874191798819,
+          "ndcg@10": 0.804980673311643,
+          "recall@10": 0.12298006494046913
+        },
+        "latency": {
+          "mean_ms": 270.36,
+          "p50_ms": 270.36,
+          "p90_ms": 297.39
+        },
+        "elo": 1472.2,
+        "elo_std": 0.0,
+        "win_rate": 0.405
+      },
+      "business_reports": null,
+      "arcd": {
+        "wins": 66,
+        "losses": 81,
+        "ties": 43,
+        "total": 190,
+        "metrics": {
+          "ndcg@5": 0.8421808868043302,
+          "recall@5": 0.94,
+          "ndcg@10": 0.8421808868043302,
+          "recall@10": 0.94
+        },
+        "latency": {
+          "mean_ms": 336.01,
+          "p50_ms": 336.01,
+          "p90_ms": 369.61
+        },
+        "elo": 1472.57,
+        "elo_std": 0.0,
+        "win_rate": 0.3474
+      },
+      "PG": null
+    },
+    "comparisons": {
+      "voyage-3.5": {
+        "wins": 31,
+        "losses": 21,
+        "ties": 8,
+        "total": 60
+      },
+      "qwen3-embedding-4b": {
+        "wins": 27,
+        "losses": 26,
+        "ties": 7,
+        "total": 60
+      },
+      "voyage-4": {
+        "wins": 66,
+        "losses": 61,
+        "ties": 13,
+        "total": 140
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 46,
+        "losses": 6,
+        "ties": 8,
+        "total": 60
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 29,
+        "losses": 22,
+        "ties": 9,
+        "total": 60
+      },
+      "voyage-3-large": {
+        "wins": 57,
+        "losses": 56,
+        "ties": 7,
+        "total": 120
+      },
+      "jina-embeddings-v3": {
+        "wins": 43,
+        "losses": 12,
+        "ties": 5,
+        "total": 60
+      },
+      "text-embedding-004": {
+        "wins": 44,
+        "losses": 15,
+        "ties": 1,
+        "total": 60
+      },
+      "text-embedding-3-small": {
+        "wins": 35,
+        "losses": 18,
+        "ties": 7,
+        "total": 60
+      },
+      "cohere-embed-v3": {
+        "wins": 36,
+        "losses": 22,
+        "ties": 2,
+        "total": 60
+      },
+      "qwen3-embedding-8b": {
+        "wins": 32,
+        "losses": 22,
+        "ties": 6,
+        "total": 60
+      },
+      "text-embedding-3-large": {
+        "wins": 27,
+        "losses": 26,
+        "ties": 7,
+        "total": 60
+      },
+      "bge-m3": {
+        "wins": 35,
+        "losses": 20,
+        "ties": 5,
+        "total": 60
+      },
+      "voyage-3.5-lite": {
+        "wins": 30,
+        "losses": 25,
+        "ties": 5,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Voyage 4",
+    "overall": {
+      "elo": 1560.75,
+      "elo_std": 0.0,
+      "wins": 1424,
+      "losses": 883,
+      "ties": 239,
+      "win_rate": 0.5593,
+      "total_judgments": 2546,
+      "avg_latency_ms": 16.57,
+      "avg_ndcg_10": 0.8589961149347601
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1585.04,
+        "elo_std": 0.0,
+        "wins": 236,
+        "losses": 135,
+        "ties": 49,
+        "win_rate": 0.5619,
+        "metrics": {
+          "ndcg@5": 0.8148184949982848,
+          "recall@5": 0.0620921385213848,
+          "ndcg@10": 0.8114052171113002,
+          "recall@10": 0.12192041470930884
+        },
+        "latency": {
+          "mean_ms": 13.3,
+          "p50_ms": 13.3,
+          "p90_ms": 14.63
+        }
+      },
+      "FiQa": {
+        "elo": 1500.0,
+        "elo_std": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "ties": 10,
+        "win_rate": 0.0,
+        "metrics": {
+          "ndcg@5": 0.8728229676833392,
+          "recall@5": 0.763095238095238,
+          "ndcg@10": 0.8588524584200614,
+          "recall@10": 0.8404761904761904
+        },
+        "latency": {
+          "mean_ms": 14.06,
+          "p50_ms": 14.06,
+          "p90_ms": 15.46
+        }
+      },
+      "SciFact": {
+        "elo": 1465.2099772104702,
+        "elo_std": 0.0,
+        "wins": 0,
+        "losses": 1,
+        "ties": 9,
+        "win_rate": 0.0,
+        "metrics": {
+          "ndcg@5": 0.7368446590333018,
+          "recall@5": 0.8044217687074829,
+          "ndcg@10": 0.7576661636414528,
+          "recall@10": 0.8775510204081632
+        },
+        "latency": {
+          "mean_ms": 16.02,
+          "p50_ms": 16.02,
+          "p90_ms": 17.62
+        }
+      },
+      "MSMARCO": {
+        "elo": 1500.0,
+        "elo_std": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "ties": 10,
+        "win_rate": 0.0,
+        "metrics": {
+          "ndcg@5": 0.9414299617494734,
+          "recall@5": 0.12253963238066756,
+          "ndcg@10": 0.930989513856291,
+          "recall@10": 0.22125853225027217
+        },
+        "latency": {
+          "mean_ms": 12.64,
+          "p50_ms": 12.64,
+          "p90_ms": 13.9
+        }
+      },
+      "ARCD": {
+        "elo": 1500.0,
+        "elo_std": 0.0,
+        "wins": 0,
+        "losses": 0,
+        "ties": 0,
+        "win_rate": 0.0,
+        "metrics": {
+          "ndcg@5": 0.9360672216446949,
+          "recall@5": 1.0,
+          "ndcg@10": 0.9360672216446949,
+          "recall@10": 1.0
+        },
+        "latency": {
+          "mean_ms": 27.56,
+          "p50_ms": 27.56,
+          "p90_ms": 30.31
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 109,
+        "losses": 51,
+        "ties": 20,
+        "total": 180
+      },
+      "text-embedding-3-small": {
+        "wins": 101,
+        "losses": 60,
+        "ties": 13,
+        "total": 174
+      },
+      "voyage-3.5-lite": {
+        "wins": 97,
+        "losses": 67,
+        "ties": 16,
+        "total": 180
+      },
+      "text-embedding-004": {
+        "wins": 130,
+        "losses": 44,
+        "ties": 6,
+        "total": 180
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 124,
+        "losses": 45,
+        "ties": 10,
+        "total": 179
+      },
+      "qwen3-embedding-4b": {
+        "wins": 91,
+        "losses": 69,
+        "ties": 20,
+        "total": 180
+      },
+      "text-embedding-3-large": {
+        "wins": 83,
+        "losses": 85,
+        "ties": 12,
+        "total": 180
+      },
+      "voyage-3.5": {
+        "wins": 91,
+        "losses": 67,
+        "ties": 18,
+        "total": 176
+      },
+      "voyage-3-large": {
+        "wins": 76,
+        "losses": 80,
+        "ties": 24,
+        "total": 180
+      },
+      "cohere-embed-v3": {
+        "wins": 115,
+        "losses": 59,
+        "ties": 6,
+        "total": 180
+      },
+      "jina-embeddings-v3": {
+        "wins": 117,
+        "losses": 43,
+        "ties": 20,
+        "total": 180
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 100,
+        "losses": 63,
+        "ties": 17,
+        "total": 180
+      },
+      "qwen3-embedding-8b": {
+        "wins": 89,
+        "losses": 74,
+        "ties": 14,
+        "total": 177
+      },
+      "voyage-4": {
+        "wins": 55,
+        "losses": 54,
+        "ties": 31,
+        "total": 140
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 61,
+        "losses": 66,
+        "ties": 13,
+        "total": 140
+      }
+    }
+  },
+  {
+    "name": "Voyage 3 Large",
+    "overall": {
+      "elo": 1552.7,
+      "elo_std": 24.11,
+      "wins": 952,
+      "losses": 579,
+      "ties": 143,
+      "win_rate": 0.5256,
+      "total_judgments": 0,
+      "avg_latency_ms": 112.94,
+      "avg_ndcg_10": 0.83702
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1540.62,
+        "elo_std": 26.52,
+        "wins": 147,
+        "losses": 75,
+        "ties": 12,
+        "win_rate": 0.6282,
+        "metrics": {
+          "ndcg@5": 0.6751431848916759,
+          "ndcg@10": 0.6384551228823081,
+          "recall@5": 0.25517945912876766,
+          "recall@10": 0.3622859260374727
+        },
+        "latency": {
+          "mean_ms": 115.68,
+          "p50_ms": 115.68,
+          "p90_ms": 127.25
+        }
+      },
+      "FiQa": {
+        "elo": 1517.33,
+        "elo_std": 26.52,
+        "wins": 135,
+        "losses": 102,
+        "ties": 3,
+        "win_rate": 0.5625,
+        "metrics": {
+          "ndcg@5": 0.7531522797585795,
+          "ndcg@10": 0.7795963166349439,
+          "recall@5": 0.7419285714285714,
+          "recall@10": 0.8368333333333333
+        },
+        "latency": {
+          "mean_ms": 118.83,
+          "p50_ms": 118.83,
+          "p90_ms": 130.71
+        }
+      },
+      "SciFact": {
+        "elo": 1566.81,
+        "elo_std": 26.52,
+        "wins": 169,
+        "losses": 61,
+        "ties": 10,
+        "win_rate": 0.7042,
+        "metrics": {
+          "ndcg@5": 0.7961464544552854,
+          "ndcg@10": 0.8091902312087678,
+          "recall@5": 0.84,
+          "recall@10": 0.88
+        },
+        "latency": {
+          "mean_ms": 129.92,
+          "p50_ms": 129.92,
+          "p90_ms": 142.91
+        }
+      },
+      "MSMARCO": {
+        "elo": 1498.78,
+        "elo_std": 26.52,
+        "wins": 102,
+        "losses": 105,
+        "ties": 33,
+        "win_rate": 0.425,
+        "metrics": {
+          "ndcg@5": 0.9971878604673581,
+          "ndcg@10": 0.9980938729907801,
+          "recall@5": 0.12166871627107337,
+          "recall@10": 0.22187052735431131
+        },
+        "latency": {
+          "mean_ms": 118.41,
+          "p50_ms": 118.41,
+          "p90_ms": 130.25
+        }
+      },
+      "ARCD": {
+        "elo": 1560.61,
+        "elo_std": 26.52,
+        "wins": 136,
+        "losses": 39,
+        "ties": 65,
+        "win_rate": 0.5667,
+        "metrics": {
+          "ndcg@5": 0.9526185950714292,
+          "ndcg@10": 0.9597427388135895,
+          "recall@5": 0.96,
+          "recall@10": 0.98
+        },
+        "latency": {
+          "mean_ms": 39.22,
+          "p50_ms": 39.22,
+          "p90_ms": 43.14
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 89,
+        "losses": 47,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.5563
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 80,
+        "losses": 48,
+        "ties": 32,
+        "total": 160,
+        "win_rate": 0.5
+      },
+      "cohere-embed-v3": {
+        "wins": 95,
+        "losses": 49,
+        "ties": 15,
+        "total": 159,
+        "win_rate": 0.5975
+      },
+      "text-embedding-004": {
+        "wins": 101,
+        "losses": 48,
+        "ties": 10,
+        "total": 159,
+        "win_rate": 0.6352
+      },
+      "jina-embeddings-v3": {
+        "wins": 86,
+        "losses": 47,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.5375
+      },
+      "text-embedding-3-large": {
+        "wins": 57,
+        "losses": 65,
+        "ties": 37,
+        "total": 159,
+        "win_rate": 0.3585
+      },
+      "text-embedding-3-small": {
+        "wins": 85,
+        "losses": 48,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.5312
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 91,
+        "losses": 50,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.5687
+      },
+      "qwen3-embedding-4b": {
+        "wins": 83,
+        "losses": 52,
+        "ties": 24,
+        "total": 159,
+        "win_rate": 0.522
+      },
+      "qwen3-embedding-8b": {
+        "wins": 74,
+        "losses": 67,
+        "ties": 18,
+        "total": 159,
+        "win_rate": 0.4654
+      },
+      "voyage-3.5": {
+        "wins": 77,
+        "losses": 58,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.4813
+      },
+      "voyage-3.5-lite": {
+        "wins": 88,
+        "losses": 54,
+        "ties": 17,
+        "total": 159,
+        "win_rate": 0.5535
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 56,
+        "losses": 57,
+        "ties": 7,
+        "total": 120
+      }
+    }
+  },
+  {
+    "name": "Qwen3 Embedding 8B Deepinfra",
+    "overall": {
+      "elo": 1513.23,
+      "elo_std": 17.51,
+      "wins": 855,
+      "losses": 672,
+      "ties": 150,
+      "win_rate": 0.4794,
+      "total_judgments": 0,
+      "avg_latency_ms": 55.52,
+      "avg_ndcg_10": 0.81813
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1525.49,
+        "elo_std": 19.26,
+        "wins": 130,
+        "losses": 89,
+        "ties": 18,
+        "win_rate": 0.5485,
+        "metrics": {
+          "ndcg@5": 0.6331790877905756,
+          "ndcg@10": 0.6253020160914509,
+          "recall@5": 0.23541640901980432,
+          "recall@10": 0.3805777232942388
+        },
+        "latency": {
+          "mean_ms": 200373.0,
+          "p50_ms": 196365.54,
+          "p90_ms": 230428.95
+        }
+      },
+      "FiQa": {
+        "elo": 1520.61,
+        "elo_std": 19.26,
+        "wins": 130,
+        "losses": 103,
+        "ties": 7,
+        "win_rate": 0.5417,
+        "metrics": {
+          "ndcg@5": 0.7603880133452773,
+          "ndcg@10": 0.7813753299857596,
+          "recall@5": 0.7324285714285714,
+          "recall@10": 0.8144523809523809
+        },
+        "latency": {
+          "mean_ms": 189471.0,
+          "p50_ms": 185681.58,
+          "p90_ms": 217891.65
+        }
+      },
+      "SciFact": {
+        "elo": 1527.84,
+        "elo_std": 19.26,
+        "wins": 140,
+        "losses": 95,
+        "ties": 5,
+        "win_rate": 0.5833,
+        "metrics": {
+          "ndcg@5": 0.7504313733256909,
+          "ndcg@10": 0.7650638346747953,
+          "recall@5": 0.8433333333333333,
+          "recall@10": 0.8833333333333333
+        },
+        "latency": {
+          "mean_ms": 200031.0,
+          "p50_ms": 196030.38,
+          "p90_ms": 230035.65
+        }
+      },
+      "MSMARCO": {
+        "elo": 1506.38,
+        "elo_std": 19.26,
+        "wins": 113,
+        "losses": 98,
+        "ties": 29,
+        "win_rate": 0.4708,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.2236594361199643
+        },
+        "latency": {
+          "mean_ms": 180144.0,
+          "p50_ms": 176541.12,
+          "p90_ms": 207165.6
+        }
+      },
+      "ARCD": {
+        "elo": 1549.63,
+        "elo_std": 19.26,
+        "wins": 120,
+        "losses": 45,
+        "ties": 75,
+        "win_rate": 0.5,
+        "metrics": {
+          "ndcg@5": 0.9126185950714292,
+          "ndcg@10": 0.9189278926071438,
+          "recall@5": 0.92,
+          "recall@10": 0.94
+        },
+        "latency": {
+          "mean_ms": 12156.0,
+          "p50_ms": 11912.88,
+          "p90_ms": 13979.4
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 77,
+        "losses": 61,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4813
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 70,
+        "losses": 64,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.4375
+      },
+      "cohere-embed-v3": {
+        "wins": 79,
+        "losses": 62,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.4938
+      },
+      "text-embedding-004": {
+        "wins": 110,
+        "losses": 36,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.6875
+      },
+      "jina-embeddings-v3": {
+        "wins": 90,
+        "losses": 49,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.5625
+      },
+      "text-embedding-3-large": {
+        "wins": 49,
+        "losses": 86,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.3063
+      },
+      "text-embedding-3-small": {
+        "wins": 73,
+        "losses": 63,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.4562
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 86,
+        "losses": 59,
+        "ties": 14,
+        "total": 159,
+        "win_rate": 0.5409
+      },
+      "qwen3-embedding-4b": {
+        "wins": 72,
+        "losses": 51,
+        "ties": 37,
+        "total": 160,
+        "win_rate": 0.45
+      },
+      "voyage-3.5": {
+        "wins": 71,
+        "losses": 66,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.4465
+      },
+      "voyage-3.5-lite": {
+        "wins": 75,
+        "losses": 59,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.4688
+      },
+      "voyage-3-large": {
+        "wins": 67,
+        "losses": 74,
+        "ties": 18,
+        "total": 159,
+        "win_rate": 0.4214
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 22,
+        "losses": 32,
+        "ties": 6,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Voyage 3 5",
+    "overall": {
+      "elo": 1512.85,
+      "elo_std": 15.66,
+      "wins": 861,
+      "losses": 685,
+      "ties": 129,
+      "win_rate": 0.4877,
+      "total_judgments": 0,
+      "avg_latency_ms": 13.31,
+      "avg_ndcg_10": 0.81565
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1527.58,
+        "elo_std": 17.23,
+        "wins": 137,
+        "losses": 89,
+        "ties": 9,
+        "win_rate": 0.583,
+        "metrics": {
+          "ndcg@5": 0.6554534419566419,
+          "ndcg@10": 0.6365284050571761,
+          "recall@5": 0.24570036356482197,
+          "recall@10": 0.3657927934484926
+        },
+        "latency": {
+          "mean_ms": 6.28,
+          "p50_ms": 6.28,
+          "p90_ms": 6.91
+        }
+      },
+      "FiQa": {
+        "elo": 1517.32,
+        "elo_std": 17.23,
+        "wins": 131,
+        "losses": 107,
+        "ties": 2,
+        "win_rate": 0.5458,
+        "metrics": {
+          "ndcg@5": 0.7214925483220611,
+          "ndcg@10": 0.7406013888949252,
+          "recall@5": 0.7150952380952381,
+          "recall@10": 0.7933095238095238
+        },
+        "latency": {
+          "mean_ms": 9.44,
+          "p50_ms": 9.44,
+          "p90_ms": 10.38
+        }
+      },
+      "SciFact": {
+        "elo": 1495.2,
+        "elo_std": 17.23,
+        "wins": 111,
+        "losses": 122,
+        "ties": 7,
+        "win_rate": 0.4625,
+        "metrics": {
+          "ndcg@5": 0.7234096111646005,
+          "ndcg@10": 0.7506311079081973,
+          "recall@5": 0.7783333333333333,
+          "recall@10": 0.8533333333333333
+        },
+        "latency": {
+          "mean_ms": 13.59,
+          "p50_ms": 13.59,
+          "p90_ms": 14.95
+        }
+      },
+      "MSMARCO": {
+        "elo": 1508.31,
+        "elo_std": 17.23,
+        "wins": 112,
+        "losses": 102,
+        "ties": 26,
+        "win_rate": 0.4667,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.2236594361199643
+        },
+        "latency": {
+          "mean_ms": 9.5,
+          "p50_ms": 9.5,
+          "p90_ms": 10.46
+        }
+      },
+      "ARCD": {
+        "elo": 1537.9,
+        "elo_std": 17.23,
+        "wins": 117,
+        "losses": 57,
+        "ties": 66,
+        "win_rate": 0.4875,
+        "metrics": {
+          "ndcg@5": 0.9504743802857166,
+          "ndcg@10": 0.9504743802857166,
+          "recall@5": 0.98,
+          "recall@10": 0.98
+        },
+        "latency": {
+          "mean_ms": 25.32,
+          "p50_ms": 25.32,
+          "p90_ms": 27.86
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 89,
+        "losses": 56,
+        "ties": 15,
+        "total": 160,
+        "win_rate": 0.5563
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 74,
+        "losses": 64,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4625
+      },
+      "cohere-embed-v3": {
+        "wins": 76,
+        "losses": 65,
+        "ties": 18,
+        "total": 159,
+        "win_rate": 0.478
+      },
+      "text-embedding-004": {
+        "wins": 98,
+        "losses": 45,
+        "ties": 16,
+        "total": 159,
+        "win_rate": 0.6164
+      },
+      "jina-embeddings-v3": {
+        "wins": 78,
+        "losses": 59,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.4906
+      },
+      "text-embedding-3-large": {
+        "wins": 63,
+        "losses": 78,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3937
+      },
+      "text-embedding-3-small": {
+        "wins": 69,
+        "losses": 67,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 101,
+        "losses": 40,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.6312
+      },
+      "qwen3-embedding-4b": {
+        "wins": 87,
+        "losses": 54,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.5437
+      },
+      "qwen3-embedding-8b": {
+        "wins": 66,
+        "losses": 71,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.4151
+      },
+      "voyage-3.5-lite": {
+        "wins": 75,
+        "losses": 62,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.4717
+      },
+      "voyage-3-large": {
+        "wins": 58,
+        "losses": 77,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.3625
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 21,
+        "losses": 31,
+        "ties": 8,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Voyage 3 5 Lite",
+    "overall": {
+      "elo": 1494.34,
+      "elo_std": 16.89,
+      "wins": 783,
+      "losses": 761,
+      "ties": 134,
+      "win_rate": 0.4442,
+      "total_judgments": 0,
+      "avg_latency_ms": 10.92,
+      "avg_ndcg_10": 0.80327
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1498.2,
+        "elo_std": 18.58,
+        "wins": 112,
+        "losses": 111,
+        "ties": 15,
+        "win_rate": 0.4706,
+        "metrics": {
+          "ndcg@5": 0.6413425829827931,
+          "ndcg@10": 0.6323402395311184,
+          "recall@5": 0.21869179387848342,
+          "recall@10": 0.3672862458014282
+        },
+        "latency": {
+          "mean_ms": 6.47,
+          "p50_ms": 6.47,
+          "p90_ms": 7.12
+        }
+      },
+      "FiQa": {
+        "elo": 1524.31,
+        "elo_std": 18.58,
+        "wins": 139,
+        "losses": 99,
+        "ties": 2,
+        "win_rate": 0.5792,
+        "metrics": {
+          "ndcg@5": 0.7083468304989364,
+          "ndcg@10": 0.7358647186710539,
+          "recall@5": 0.687095238095238,
+          "recall@10": 0.7804523809523809
+        },
+        "latency": {
+          "mean_ms": 16.4,
+          "p50_ms": 16.4,
+          "p90_ms": 18.04
+        }
+      },
+      "SciFact": {
+        "elo": 1492.75,
+        "elo_std": 18.58,
+        "wins": 113,
+        "losses": 123,
+        "ties": 4,
+        "win_rate": 0.4708,
+        "metrics": {
+          "ndcg@5": 0.6704654855206137,
+          "ndcg@10": 0.7187460788573489,
+          "recall@5": 0.7183333333333333,
+          "recall@10": 0.8433333333333333
+        },
+        "latency": {
+          "mean_ms": 11.58,
+          "p50_ms": 11.58,
+          "p90_ms": 12.74
+        }
+      },
+      "MSMARCO": {
+        "elo": 1467.93,
+        "elo_std": 18.58,
+        "wins": 80,
+        "losses": 131,
+        "ties": 29,
+        "win_rate": 0.3333,
+        "metrics": {
+          "ndcg@5": 0.9943757209347163,
+          "ndcg@10": 0.9948554203776608,
+          "recall@5": 0.12150140825701951,
+          "recall@10": 0.22153591132620357
+        },
+        "latency": {
+          "mean_ms": 9.83,
+          "p50_ms": 9.83,
+          "p90_ms": 10.82
+        }
+      },
+      "ARCD": {
+        "elo": 1516.26,
+        "elo_std": 18.58,
+        "wins": 100,
+        "losses": 72,
+        "ties": 68,
+        "win_rate": 0.4167,
+        "metrics": {
+          "ndcg@5": 0.9278557852142875,
+          "ndcg@10": 0.9345224518809542,
+          "recall@5": 0.96,
+          "recall@10": 0.98
+        },
+        "latency": {
+          "mean_ms": 14.05,
+          "p50_ms": 14.05,
+          "p90_ms": 15.46
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 68,
+        "losses": 65,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.425
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 73,
+        "losses": 58,
+        "ties": 29,
+        "total": 160,
+        "win_rate": 0.4562
+      },
+      "cohere-embed-v3": {
+        "wins": 80,
+        "losses": 61,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.5
+      },
+      "text-embedding-004": {
+        "wins": 104,
+        "losses": 44,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.65
+      },
+      "jina-embeddings-v3": {
+        "wins": 69,
+        "losses": 70,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "text-embedding-3-large": {
+        "wins": 50,
+        "losses": 87,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.3125
+      },
+      "text-embedding-3-small": {
+        "wins": 76,
+        "losses": 67,
+        "ties": 17,
+        "total": 160,
+        "win_rate": 0.475
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 85,
+        "losses": 50,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.5312
+      },
+      "qwen3-embedding-4b": {
+        "wins": 72,
+        "losses": 63,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.45
+      },
+      "qwen3-embedding-8b": {
+        "wins": 59,
+        "losses": 75,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.3688
+      },
+      "voyage-3.5": {
+        "wins": 62,
+        "losses": 75,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.3899
+      },
+      "voyage-3-large": {
+        "wins": 54,
+        "losses": 88,
+        "ties": 17,
+        "total": 159,
+        "win_rate": 0.3396
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 25,
+        "losses": 30,
+        "ties": 5,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Cohere Embed Multilingual V3",
+    "overall": {
+      "elo": 1491.43,
+      "elo_std": 6.67,
+      "wins": 772,
+      "losses": 752,
+      "ties": 156,
+      "win_rate": 0.4286,
+      "total_judgments": 0,
+      "avg_latency_ms": 7.29,
+      "avg_ndcg_10": 0.78084
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1500.02,
+        "elo_std": 7.34,
+        "wins": 115,
+        "losses": 111,
+        "ties": 14,
+        "win_rate": 0.4792,
+        "metrics": {
+          "ndcg@5": 0.6186088258842993,
+          "ndcg@10": 0.590748915896192,
+          "recall@5": 0.22163970290088092,
+          "recall@10": 0.3294881436249488
+        },
+        "latency": {
+          "mean_ms": 33570.0,
+          "p50_ms": 32898.6,
+          "p90_ms": 38605.5
+        }
+      },
+      "FiQa": {
+        "elo": 1488.72,
+        "elo_std": 7.34,
+        "wins": 109,
+        "losses": 127,
+        "ties": 4,
+        "win_rate": 0.4542,
+        "metrics": {
+          "ndcg@5": 0.6370869699995559,
+          "ndcg@10": 0.6544133945100955,
+          "recall@5": 0.6214047619047619,
+          "recall@10": 0.691952380952381
+        },
+        "latency": {
+          "mean_ms": 37581.0,
+          "p50_ms": 36829.38,
+          "p90_ms": 43218.15
+        }
+      },
+      "SciFact": {
+        "elo": 1500.87,
+        "elo_std": 7.34,
+        "wins": 119,
+        "losses": 115,
+        "ties": 6,
+        "win_rate": 0.4958,
+        "metrics": {
+          "ndcg@5": 0.72283605240406,
+          "ndcg@10": 0.7315994428672664,
+          "recall@5": 0.8083333333333332,
+          "recall@10": 0.8333333333333333
+        },
+        "latency": {
+          "mean_ms": 39542.0,
+          "p50_ms": 38751.16,
+          "p90_ms": 45473.3
+        }
+      },
+      "MSMARCO": {
+        "elo": 1512.13,
+        "elo_std": 7.34,
+        "wins": 106,
+        "losses": 87,
+        "ties": 47,
+        "win_rate": 0.4417,
+        "metrics": {
+          "ndcg@5": 0.9958802900481155,
+          "ndcg@10": 0.9944790360026518,
+          "recall@5": 0.12166871627107337,
+          "recall@10": 0.21829270982300544
+        },
+        "latency": {
+          "mean_ms": 32380.0,
+          "p50_ms": 31732.4,
+          "p90_ms": 37237.0
+        }
+      },
+      "ARCD": {
+        "elo": 1502.69,
+        "elo_std": 7.34,
+        "wins": 96,
+        "losses": 82,
+        "ties": 62,
+        "win_rate": 0.4,
+        "metrics": {
+          "ndcg@5": 0.9252371901428583,
+          "ndcg@10": 0.9329742462875491,
+          "recall@5": 0.94,
+          "recall@10": 0.96
+        },
+        "latency": {
+          "mean_ms": 2305.0,
+          "p50_ms": 2258.9,
+          "p90_ms": 2650.75
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 75,
+        "losses": 59,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.4688
+      },
+      "cohere-embed-v3": {
+        "wins": 71,
+        "losses": 63,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.4437
+      },
+      "text-embedding-004": {
+        "wins": 105,
+        "losses": 39,
+        "ties": 16,
+        "total": 160,
+        "win_rate": 0.6562
+      },
+      "jina-embeddings-v3": {
+        "wins": 69,
+        "losses": 69,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "text-embedding-3-large": {
+        "wins": 43,
+        "losses": 84,
+        "ties": 33,
+        "total": 160,
+        "win_rate": 0.2687
+      },
+      "text-embedding-3-small": {
+        "wins": 69,
+        "losses": 69,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 86,
+        "losses": 53,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.5375
+      },
+      "qwen3-embedding-4b": {
+        "wins": 71,
+        "losses": 59,
+        "ties": 30,
+        "total": 160,
+        "win_rate": 0.4437
+      },
+      "qwen3-embedding-8b": {
+        "wins": 64,
+        "losses": 70,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.4
+      },
+      "voyage-3.5": {
+        "wins": 64,
+        "losses": 74,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4
+      },
+      "voyage-3.5-lite": {
+        "wins": 58,
+        "losses": 73,
+        "ties": 29,
+        "total": 160,
+        "win_rate": 0.3625
+      },
+      "voyage-3-large": {
+        "wins": 48,
+        "losses": 80,
+        "ties": 32,
+        "total": 160,
+        "win_rate": 0.3
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 22,
+        "losses": 29,
+        "ties": 9,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Openai Text Embedding 3 Small",
+    "overall": {
+      "elo": 1484.15,
+      "elo_std": 14.49,
+      "wins": 785,
+      "losses": 765,
+      "ties": 130,
+      "win_rate": 0.4458,
+      "total_judgments": 0,
+      "avg_latency_ms": 8.65,
+      "avg_ndcg_10": 0.76214
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1492.26,
+        "elo_std": 15.94,
+        "wins": 110,
+        "losses": 119,
+        "ties": 11,
+        "win_rate": 0.4583,
+        "metrics": {
+          "ndcg@5": 0.6048751078280651,
+          "ndcg@10": 0.6041165254497666,
+          "recall@5": 0.23014526169109972,
+          "recall@10": 0.3653877193972868
+        },
+        "latency": {
+          "mean_ms": 6.98,
+          "p50_ms": 6.98,
+          "p90_ms": 7.68
+        }
+      },
+      "FiQa": {
+        "elo": 1488.19,
+        "elo_std": 15.94,
+        "wins": 108,
+        "losses": 126,
+        "ties": 6,
+        "win_rate": 0.45,
+        "metrics": {
+          "ndcg@5": 0.6351644579341343,
+          "ndcg@10": 0.6469916732527227,
+          "recall@5": 0.6234047619047618,
+          "recall@10": 0.6812619047619047
+        },
+        "latency": {
+          "mean_ms": 8.11,
+          "p50_ms": 8.11,
+          "p90_ms": 8.92
+        }
+      },
+      "SciFact": {
+        "elo": 1495.31,
+        "elo_std": 15.94,
+        "wins": 115,
+        "losses": 122,
+        "ties": 3,
+        "win_rate": 0.4792,
+        "metrics": {
+          "ndcg@5": 0.6816281140222606,
+          "ndcg@10": 0.7071146908183491,
+          "recall@5": 0.7783333333333333,
+          "recall@10": 0.8433333333333334
+        },
+        "latency": {
+          "mean_ms": 10.94,
+          "p50_ms": 10.94,
+          "p90_ms": 12.03
+        }
+      },
+      "MSMARCO": {
+        "elo": 1499.88,
+        "elo_std": 15.94,
+        "wins": 107,
+        "losses": 106,
+        "ties": 27,
+        "win_rate": 0.4458,
+        "metrics": {
+          "ndcg@5": 0.9967352071062077,
+          "ndcg@10": 0.9902945183616269,
+          "recall@5": 0.12166871627107337,
+          "recall@10": 0.2129259835260466
+        },
+        "latency": {
+          "mean_ms": 7.0,
+          "p50_ms": 7.0,
+          "p90_ms": 7.7
+        }
+      },
+      "ARCD": {
+        "elo": 1487.35,
+        "elo_std": 15.94,
+        "wins": 75,
+        "losses": 95,
+        "ties": 70,
+        "win_rate": 0.3125,
+        "metrics": {
+          "ndcg@5": 0.8550828475372232,
+          "ndcg@10": 0.8622069912793836,
+          "recall@5": 0.9,
+          "recall@10": 0.92
+        },
+        "latency": {
+          "mean_ms": 11.66,
+          "p50_ms": 11.66,
+          "p90_ms": 12.83
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 70,
+        "losses": 67,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.4375
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 69,
+        "losses": 69,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "cohere-embed-v3": {
+        "wins": 83,
+        "losses": 65,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.5188
+      },
+      "text-embedding-004": {
+        "wins": 106,
+        "losses": 39,
+        "ties": 15,
+        "total": 160,
+        "win_rate": 0.6625
+      },
+      "jina-embeddings-v3": {
+        "wins": 70,
+        "losses": 65,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.4375
+      },
+      "text-embedding-3-large": {
+        "wins": 49,
+        "losses": 82,
+        "ties": 29,
+        "total": 160,
+        "win_rate": 0.3063
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 89,
+        "losses": 57,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.5563
+      },
+      "qwen3-embedding-4b": {
+        "wins": 75,
+        "losses": 64,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.4688
+      },
+      "qwen3-embedding-8b": {
+        "wins": 63,
+        "losses": 73,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.3937
+      },
+      "voyage-3.5": {
+        "wins": 67,
+        "losses": 69,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.4188
+      },
+      "voyage-3.5-lite": {
+        "wins": 67,
+        "losses": 76,
+        "ties": 17,
+        "total": 160,
+        "win_rate": 0.4188
+      },
+      "voyage-3-large": {
+        "wins": 48,
+        "losses": 85,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.3
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 18,
+        "losses": 35,
+        "ties": 7,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Qwen3 Embedding 4B Deepinfra",
+    "overall": {
+      "elo": 1483.36,
+      "elo_std": 14.2,
+      "wins": 743,
+      "losses": 797,
+      "ties": 138,
+      "win_rate": 0.4114,
+      "total_judgments": 0,
+      "avg_latency_ms": 27.98,
+      "avg_ndcg_10": 0.80196
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1479.07,
+        "elo_std": 15.62,
+        "wins": 96,
+        "losses": 129,
+        "ties": 13,
+        "win_rate": 0.4034,
+        "metrics": {
+          "ndcg@5": 0.6026837960721341,
+          "ndcg@10": 0.5954962683323095,
+          "recall@5": 0.23392237742640765,
+          "recall@10": 0.37528494826773506
+        },
+        "latency": {
+          "mean_ms": 106747.0,
+          "p50_ms": 104612.06,
+          "p90_ms": 122759.05
+        }
+      },
+      "FiQa": {
+        "elo": 1496.51,
+        "elo_std": 15.62,
+        "wins": 114,
+        "losses": 123,
+        "ties": 3,
+        "win_rate": 0.475,
+        "metrics": {
+          "ndcg@5": 0.7235985000990519,
+          "ndcg@10": 0.7591431320684998,
+          "recall@5": 0.7149285714285714,
+          "recall@10": 0.8352857142857144
+        },
+        "latency": {
+          "mean_ms": 120137.0,
+          "p50_ms": 117734.26,
+          "p90_ms": 138157.55
+        }
+      },
+      "SciFact": {
+        "elo": 1495.19,
+        "elo_std": 15.62,
+        "wins": 111,
+        "losses": 124,
+        "ties": 5,
+        "win_rate": 0.4625,
+        "metrics": {
+          "ndcg@5": 0.6954765513099016,
+          "ndcg@10": 0.7328103168647541,
+          "recall@5": 0.7866666666666667,
+          "recall@10": 0.8933333333333334
+        },
+        "latency": {
+          "mean_ms": 143712.0,
+          "p50_ms": 140837.76,
+          "p90_ms": 165268.8
+        }
+      },
+      "MSMARCO": {
+        "elo": 1511.43,
+        "elo_std": 15.62,
+        "wins": 108,
+        "losses": 90,
+        "ties": 42,
+        "win_rate": 0.45,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 1.0,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.2236594361199643
+        },
+        "latency": {
+          "mean_ms": 112945.0,
+          "p50_ms": 110686.1,
+          "p90_ms": 129886.75
+        }
+      },
+      "ARCD": {
+        "elo": 1521.29,
+        "elo_std": 15.62,
+        "wins": 102,
+        "losses": 72,
+        "ties": 66,
+        "win_rate": 0.425,
+        "metrics": {
+          "ndcg@5": 0.9152371901428583,
+          "ndcg@10": 0.9223613338850188,
+          "recall@5": 0.94,
+          "recall@10": 0.96
+        },
+        "latency": {
+          "mean_ms": 9581.0,
+          "p50_ms": 9389.38,
+          "p90_ms": 11018.15
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 65,
+        "losses": 72,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.4062
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 59,
+        "losses": 71,
+        "ties": 30,
+        "total": 160,
+        "win_rate": 0.3688
+      },
+      "cohere-embed-v3": {
+        "wins": 71,
+        "losses": 68,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.4437
+      },
+      "text-embedding-004": {
+        "wins": 98,
+        "losses": 50,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.6125
+      },
+      "jina-embeddings-v3": {
+        "wins": 79,
+        "losses": 59,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4938
+      },
+      "text-embedding-3-large": {
+        "wins": 49,
+        "losses": 90,
+        "ties": 20,
+        "total": 159,
+        "win_rate": 0.3082
+      },
+      "text-embedding-3-small": {
+        "wins": 64,
+        "losses": 75,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.4
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 84,
+        "losses": 55,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.525
+      },
+      "qwen3-embedding-8b": {
+        "wins": 51,
+        "losses": 72,
+        "ties": 37,
+        "total": 160,
+        "win_rate": 0.3187
+      },
+      "voyage-3.5": {
+        "wins": 54,
+        "losses": 87,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3375
+      },
+      "voyage-3.5-lite": {
+        "wins": 63,
+        "losses": 72,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.3937
+      },
+      "voyage-3-large": {
+        "wins": 52,
+        "losses": 83,
+        "ties": 24,
+        "total": 159,
+        "win_rate": 0.327
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 26,
+        "losses": 27,
+        "ties": 7,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Bge M3 Deepinfra",
+    "overall": {
+      "elo": 1470.62,
+      "elo_std": 21.03,
+      "wins": 733,
+      "losses": 812,
+      "ties": 135,
+      "win_rate": 0.4089,
+      "total_judgments": 0,
+      "avg_latency_ms": 29.38,
+      "avg_ndcg_10": 0.75321
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1494.53,
+        "elo_std": 23.13,
+        "wins": 110,
+        "losses": 113,
+        "ties": 17,
+        "win_rate": 0.4583,
+        "metrics": {
+          "ndcg@5": 0.6246642332289627,
+          "ndcg@10": 0.6026496885091549,
+          "recall@5": 0.23590705992700373,
+          "recall@10": 0.34148035074270383
+        },
+        "latency": {
+          "mean_ms": 17.12,
+          "p50_ms": 17.12,
+          "p90_ms": 18.83
+        }
+      },
+      "FiQa": {
+        "elo": 1489.65,
+        "elo_std": 23.13,
+        "wins": 113,
+        "losses": 126,
+        "ties": 1,
+        "win_rate": 0.4708,
+        "metrics": {
+          "ndcg@5": 0.5972769181065062,
+          "ndcg@10": 0.608663066236095,
+          "recall@5": 0.6067380952380952,
+          "recall@10": 0.6662619047619047
+        },
+        "latency": {
+          "mean_ms": 31.76,
+          "p50_ms": 31.76,
+          "p90_ms": 34.93
+        }
+      },
+      "SciFact": {
+        "elo": 1439.91,
+        "elo_std": 23.13,
+        "wins": 71,
+        "losses": 168,
+        "ties": 1,
+        "win_rate": 0.2958,
+        "metrics": {
+          "ndcg@5": 0.5777899531549359,
+          "ndcg@10": 0.6168041495703185,
+          "recall@5": 0.6516666666666667,
+          "recall@10": 0.7633333333333333
+        },
+        "latency": {
+          "mean_ms": 30.59,
+          "p50_ms": 30.59,
+          "p90_ms": 33.65
+        }
+      },
+      "MSMARCO": {
+        "elo": 1506.58,
+        "elo_std": 23.13,
+        "wins": 107,
+        "losses": 99,
+        "ties": 34,
+        "win_rate": 0.4458,
+        "metrics": {
+          "ndcg@5": 0.9971878604673581,
+          "ndcg@10": 0.9966976601929638,
+          "recall@5": 0.12166871627107337,
+          "recall@10": 0.22008161858865838
+        },
+        "latency": {
+          "mean_ms": 18.73,
+          "p50_ms": 18.73,
+          "p90_ms": 20.6
+        }
+      },
+      "ARCD": {
+        "elo": 1515.28,
+        "elo_std": 23.13,
+        "wins": 103,
+        "losses": 70,
+        "ties": 67,
+        "win_rate": 0.4292,
+        "metrics": {
+          "ndcg@5": 0.941232126232897,
+          "ndcg@10": 0.941232126232897,
+          "recall@5": 0.96,
+          "recall@10": 0.96
+        },
+        "latency": {
+          "mean_ms": 44.1,
+          "p50_ms": 44.1,
+          "p90_ms": 48.51
+        }
+      }
+    },
+    "comparisons": {
+      "cohere-embed-multilingual-v3": {
+        "wins": 59,
+        "losses": 75,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.3688
+      },
+      "cohere-embed-v3": {
+        "wins": 74,
+        "losses": 69,
+        "ties": 17,
+        "total": 160,
+        "win_rate": 0.4625
+      },
+      "text-embedding-004": {
+        "wins": 97,
+        "losses": 53,
+        "ties": 10,
+        "total": 160,
+        "win_rate": 0.6062
+      },
+      "jina-embeddings-v3": {
+        "wins": 74,
+        "losses": 63,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.4625
+      },
+      "text-embedding-3-large": {
+        "wins": 41,
+        "losses": 101,
+        "ties": 18,
+        "total": 160,
+        "win_rate": 0.2562
+      },
+      "text-embedding-3-small": {
+        "wins": 67,
+        "losses": 70,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.4188
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 72,
+        "losses": 66,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.45
+      },
+      "qwen3-embedding-4b": {
+        "wins": 72,
+        "losses": 65,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.45
+      },
+      "qwen3-embedding-8b": {
+        "wins": 61,
+        "losses": 77,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.3812
+      },
+      "voyage-3.5": {
+        "wins": 56,
+        "losses": 89,
+        "ties": 15,
+        "total": 160,
+        "win_rate": 0.35
+      },
+      "voyage-3.5-lite": {
+        "wins": 65,
+        "losses": 68,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.4062
+      },
+      "voyage-3-large": {
+        "wins": 47,
+        "losses": 89,
+        "ties": 24,
+        "total": 160,
+        "win_rate": 0.2938
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 20,
+        "losses": 35,
+        "ties": 5,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Cohere Embed V3",
+    "overall": {
+      "elo": 1465.22,
+      "elo_std": 41.64,
+      "wins": 727,
+      "losses": 840,
+      "ties": 110,
+      "win_rate": 0.41,
+      "total_judgments": 0,
+      "avg_latency_ms": 7.49,
+      "avg_ndcg_10": 0.68634
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1495.68,
+        "elo_std": 45.8,
+        "wins": 106,
+        "losses": 110,
+        "ties": 21,
+        "win_rate": 0.4473,
+        "metrics": {
+          "ndcg@5": 0.6342171920058558,
+          "ndcg@10": 0.6192790157097808,
+          "recall@5": 0.21897429090537163,
+          "recall@10": 0.3526039287213384
+        },
+        "latency": {
+          "mean_ms": 30356.0,
+          "p50_ms": 29748.88,
+          "p90_ms": 34909.4
+        }
+      },
+      "FiQa": {
+        "elo": 1483.44,
+        "elo_std": 45.8,
+        "wins": 107,
+        "losses": 130,
+        "ties": 3,
+        "win_rate": 0.4458,
+        "metrics": {
+          "ndcg@5": 0.6409416340155383,
+          "ndcg@10": 0.6502714655330601,
+          "recall@5": 0.6392380952380952,
+          "recall@10": 0.6784285714285713
+        },
+        "latency": {
+          "mean_ms": 33241.0,
+          "p50_ms": 32576.18,
+          "p90_ms": 38227.15
+        }
+      },
+      "SciFact": {
+        "elo": 1506.51,
+        "elo_std": 45.8,
+        "wins": 123,
+        "losses": 111,
+        "ties": 6,
+        "win_rate": 0.5125,
+        "metrics": {
+          "ndcg@5": 0.729209861467689,
+          "ndcg@10": 0.76888181181824,
+          "recall@5": 0.7883333333333334,
+          "recall@10": 0.9
+        },
+        "latency": {
+          "mean_ms": 41205.0,
+          "p50_ms": 40380.9,
+          "p90_ms": 47385.75
+        }
+      },
+      "MSMARCO": {
+        "elo": 1519.35,
+        "elo_std": 45.8,
+        "wins": 115,
+        "losses": 82,
+        "ties": 43,
+        "win_rate": 0.4792,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 0.9955592936833159,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.21829270982300544
+        },
+        "latency": {
+          "mean_ms": 30494.0,
+          "p50_ms": 29884.12,
+          "p90_ms": 35068.1
+        }
+      },
+      "ARCD": {
+        "elo": 1383.31,
+        "elo_std": 45.8,
+        "wins": 20,
+        "losses": 201,
+        "ties": 19,
+        "win_rate": 0.0833,
+        "metrics": {
+          "ndcg@5": 0.34861353116146787,
+          "ndcg@10": 0.39768986418178337,
+          "recall@5": 0.38,
+          "recall@10": 0.52
+        },
+        "latency": {
+          "mean_ms": 3093.0,
+          "p50_ms": 3031.14,
+          "p90_ms": 3556.95
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 69,
+        "losses": 74,
+        "ties": 17,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 63,
+        "losses": 71,
+        "ties": 26,
+        "total": 160,
+        "win_rate": 0.3937
+      },
+      "text-embedding-004": {
+        "wins": 93,
+        "losses": 48,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.5813
+      },
+      "jina-embeddings-v3": {
+        "wins": 75,
+        "losses": 70,
+        "ties": 14,
+        "total": 159,
+        "win_rate": 0.4717
+      },
+      "text-embedding-3-large": {
+        "wins": 45,
+        "losses": 93,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.2812
+      },
+      "text-embedding-3-small": {
+        "wins": 65,
+        "losses": 83,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.4062
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 71,
+        "losses": 75,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.4437
+      },
+      "qwen3-embedding-4b": {
+        "wins": 68,
+        "losses": 71,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.425
+      },
+      "qwen3-embedding-8b": {
+        "wins": 62,
+        "losses": 79,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3875
+      },
+      "voyage-3.5": {
+        "wins": 65,
+        "losses": 76,
+        "ties": 18,
+        "total": 159,
+        "win_rate": 0.4088
+      },
+      "voyage-3.5-lite": {
+        "wins": 61,
+        "losses": 80,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3812
+      },
+      "voyage-3-large": {
+        "wins": 49,
+        "losses": 95,
+        "ties": 15,
+        "total": 159,
+        "win_rate": 0.3082
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 22,
+        "losses": 36,
+        "ties": 2,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Jina Embeddings V3",
+    "overall": {
+      "elo": 1448.96,
+      "elo_std": 21.06,
+      "wins": 711,
+      "losses": 833,
+      "ties": 134,
+      "win_rate": 0.4025,
+      "total_judgments": 0,
+      "avg_latency_ms": 92.62,
+      "avg_ndcg_10": 0.76559
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1472.08,
+        "elo_std": 23.17,
+        "wins": 89,
+        "losses": 134,
+        "ties": 15,
+        "win_rate": 0.3739,
+        "metrics": {
+          "ndcg@5": 0.6161663957918376,
+          "ndcg@10": 0.5906979981072923,
+          "recall@5": 0.22516342547778617,
+          "recall@10": 0.3397462627202473
+        },
+        "latency": {
+          "mean_ms": 199515.0,
+          "p50_ms": 195524.7,
+          "p90_ms": 229442.25
+        }
+      },
+      "FiQa": {
+        "elo": 1484.42,
+        "elo_std": 23.17,
+        "wins": 102,
+        "losses": 129,
+        "ties": 9,
+        "win_rate": 0.425,
+        "metrics": {
+          "ndcg@5": 0.645222902873974,
+          "ndcg@10": 0.6789466722246543,
+          "recall@5": 0.6327619047619047,
+          "recall@10": 0.7414761904761903
+        },
+        "latency": {
+          "mean_ms": 458812.0,
+          "p50_ms": 449635.76,
+          "p90_ms": 527633.8
+        }
+      },
+      "SciFact": {
+        "elo": 1462.17,
+        "elo_std": 23.17,
+        "wins": 87,
+        "losses": 148,
+        "ties": 5,
+        "win_rate": 0.3625,
+        "metrics": {
+          "ndcg@5": 0.621855723453969,
+          "ndcg@10": 0.6611015922536204,
+          "recall@5": 0.695,
+          "recall@10": 0.8
+        },
+        "latency": {
+          "mean_ms": 270629.0,
+          "p50_ms": 265216.42,
+          "p90_ms": 311223.35
+        }
+      },
+      "MSMARCO": {
+        "elo": 1503.79,
+        "elo_std": 23.17,
+        "wins": 107,
+        "losses": 98,
+        "ties": 35,
+        "win_rate": 0.4458,
+        "metrics": {
+          "ndcg@5": 1.0,
+          "ndcg@10": 0.9970272534264375,
+          "recall@5": 0.12345762503672635,
+          "recall@10": 0.22008161858865838
+        },
+        "latency": {
+          "mean_ms": 476020.0,
+          "p50_ms": 466499.6,
+          "p90_ms": 547423.0
+        }
+      },
+      "ARCD": {
+        "elo": 1530.47,
+        "elo_std": 23.17,
+        "wins": 113,
+        "losses": 69,
+        "ties": 58,
+        "win_rate": 0.4708,
+        "metrics": {
+          "ndcg@5": 0.8878557852142874,
+          "ndcg@10": 0.9001856826632817,
+          "recall@5": 0.92,
+          "recall@10": 0.96
+        },
+        "latency": {
+          "mean_ms": 85941.0,
+          "p50_ms": 84222.18,
+          "p90_ms": 98832.15
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 63,
+        "losses": 74,
+        "ties": 23,
+        "total": 160,
+        "win_rate": 0.3937
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 69,
+        "losses": 69,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4313
+      },
+      "cohere-embed-v3": {
+        "wins": 70,
+        "losses": 75,
+        "ties": 14,
+        "total": 159,
+        "win_rate": 0.4403
+      },
+      "text-embedding-004": {
+        "wins": 95,
+        "losses": 55,
+        "ties": 10,
+        "total": 160,
+        "win_rate": 0.5938
+      },
+      "text-embedding-3-large": {
+        "wins": 52,
+        "losses": 88,
+        "ties": 20,
+        "total": 160,
+        "win_rate": 0.325
+      },
+      "text-embedding-3-small": {
+        "wins": 65,
+        "losses": 70,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.4062
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 74,
+        "losses": 68,
+        "ties": 18,
+        "total": 160,
+        "win_rate": 0.4625
+      },
+      "qwen3-embedding-4b": {
+        "wins": 59,
+        "losses": 79,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.3688
+      },
+      "qwen3-embedding-8b": {
+        "wins": 49,
+        "losses": 90,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.3063
+      },
+      "voyage-3.5": {
+        "wins": 59,
+        "losses": 78,
+        "ties": 22,
+        "total": 159,
+        "win_rate": 0.3711
+      },
+      "voyage-3.5-lite": {
+        "wins": 70,
+        "losses": 69,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.4375
+      },
+      "voyage-3-large": {
+        "wins": 47,
+        "losses": 86,
+        "ties": 27,
+        "total": 160,
+        "win_rate": 0.2938
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 12,
+        "losses": 43,
+        "ties": 5,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Qwen3 Embedding 0 6B Deepinfra",
+    "overall": {
+      "elo": 1428.69,
+      "elo_std": 18.79,
+      "wins": 671,
+      "losses": 907,
+      "ties": 101,
+      "win_rate": 0.3726,
+      "total_judgments": 0,
+      "avg_latency_ms": 22.57,
+      "avg_ndcg_10": 0.75055
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1442.62,
+        "elo_std": 20.67,
+        "wins": 67,
+        "losses": 161,
+        "ties": 11,
+        "win_rate": 0.2803,
+        "metrics": {
+          "ndcg@5": 0.5492018881010603,
+          "ndcg@10": 0.5557840242327204,
+          "recall@5": 0.2162990213325226,
+          "recall@10": 0.34991682733823287
+        },
+        "latency": {
+          "mean_ms": 67654.0,
+          "p50_ms": 66300.92,
+          "p90_ms": 77802.1
+        }
+      },
+      "FiQa": {
+        "elo": 1465.48,
+        "elo_std": 20.67,
+        "wins": 92,
+        "losses": 146,
+        "ties": 2,
+        "win_rate": 0.3833,
+        "metrics": {
+          "ndcg@5": 0.6202954731568737,
+          "ndcg@10": 0.6472377371126572,
+          "recall@5": 0.5904285714285714,
+          "recall@10": 0.6799761904761904
+        },
+        "latency": {
+          "mean_ms": 212205.0,
+          "p50_ms": 207960.9,
+          "p90_ms": 244035.75
+        }
+      },
+      "SciFact": {
+        "elo": 1487.51,
+        "elo_std": 20.67,
+        "wins": 108,
+        "losses": 128,
+        "ties": 4,
+        "win_rate": 0.45,
+        "metrics": {
+          "ndcg@5": 0.666302779252377,
+          "ndcg@10": 0.685766725555949,
+          "recall@5": 0.7233333333333333,
+          "recall@10": 0.7833333333333333
+        },
+        "latency": {
+          "mean_ms": 102019.0,
+          "p50_ms": 99978.62,
+          "p90_ms": 117321.85
+        }
+      },
+      "MSMARCO": {
+        "elo": 1462.41,
+        "elo_std": 20.67,
+        "wins": 79,
+        "losses": 140,
+        "ties": 21,
+        "win_rate": 0.3292,
+        "metrics": {
+          "ndcg@5": 0.9971878604673581,
+          "ndcg@10": 0.9920766328983496,
+          "recall@5": 0.12166871627107337,
+          "recall@10": 0.21471489229169954
+        },
+        "latency": {
+          "mean_ms": 65717.0,
+          "p50_ms": 64402.66,
+          "p90_ms": 75574.55
+        }
+      },
+      "ARCD": {
+        "elo": 1495.69,
+        "elo_std": 20.67,
+        "wins": 87,
+        "losses": 95,
+        "ties": 58,
+        "win_rate": 0.3625,
+        "metrics": {
+          "ndcg@5": 0.8652371901428583,
+          "ndcg@10": 0.8719038568095249,
+          "recall@5": 0.88,
+          "recall@10": 0.9
+        },
+        "latency": {
+          "mean_ms": 6841.0,
+          "p50_ms": 6704.18,
+          "p90_ms": 7867.15
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 66,
+        "losses": 72,
+        "ties": 22,
+        "total": 160,
+        "win_rate": 0.4125
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 53,
+        "losses": 86,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.3312
+      },
+      "cohere-embed-v3": {
+        "wins": 75,
+        "losses": 71,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.4688
+      },
+      "text-embedding-004": {
+        "wins": 97,
+        "losses": 51,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.6062
+      },
+      "jina-embeddings-v3": {
+        "wins": 68,
+        "losses": 74,
+        "ties": 18,
+        "total": 160,
+        "win_rate": 0.425
+      },
+      "text-embedding-3-large": {
+        "wins": 45,
+        "losses": 96,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.2812
+      },
+      "text-embedding-3-small": {
+        "wins": 57,
+        "losses": 89,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.3563
+      },
+      "qwen3-embedding-4b": {
+        "wins": 55,
+        "losses": 84,
+        "ties": 21,
+        "total": 160,
+        "win_rate": 0.3438
+      },
+      "qwen3-embedding-8b": {
+        "wins": 59,
+        "losses": 86,
+        "ties": 14,
+        "total": 159,
+        "win_rate": 0.3711
+      },
+      "voyage-3.5": {
+        "wins": 40,
+        "losses": 101,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.25
+      },
+      "voyage-3.5-lite": {
+        "wins": 50,
+        "losses": 85,
+        "ties": 25,
+        "total": 160,
+        "win_rate": 0.3125
+      },
+      "voyage-3-large": {
+        "wins": 50,
+        "losses": 91,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3125
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 6,
+        "losses": 46,
+        "ties": 8,
+        "total": 60
+      }
+    }
+  },
+  {
+    "name": "Gemini Embedding 004",
+    "overall": {
+      "elo": 1367.09,
+      "elo_std": 42.14,
+      "wins": 493,
+      "losses": 1143,
+      "ties": 41,
+      "win_rate": 0.2796,
+      "total_judgments": 0,
+      "avg_latency_ms": 12.71,
+      "avg_ndcg_10": 0.58491
+    },
+    "by_dataset": {
+      "PG": null,
+      "business_reports": null,
+      "DBPedia": {
+        "elo": 1478.93,
+        "elo_std": 46.35,
+        "wins": 99,
+        "losses": 133,
+        "ties": 5,
+        "win_rate": 0.4177,
+        "metrics": {
+          "ndcg@5": 0.5356139587629751,
+          "ndcg@10": 0.5172762215449447,
+          "recall@5": 0.1999504742199784,
+          "recall@10": 0.3043474197977817
+        },
+        "latency": {
+          "mean_ms": 11.68,
+          "p50_ms": 11.68,
+          "p90_ms": 12.85
+        }
+      },
+      "FiQa": {
+        "elo": 1462.29,
+        "elo_std": 46.35,
+        "wins": 89,
+        "losses": 150,
+        "ties": 1,
+        "win_rate": 0.3708,
+        "metrics": {
+          "ndcg@5": 0.6134570199677216,
+          "ndcg@10": 0.6491972702017357,
+          "recall@5": 0.6452619047619048,
+          "recall@10": 0.7477857142857143
+        },
+        "latency": {
+          "mean_ms": 12.31,
+          "p50_ms": 12.31,
+          "p90_ms": 13.54
+        }
+      },
+      "SciFact": {
+        "elo": 1487.3,
+        "elo_std": 46.35,
+        "wins": 110,
+        "losses": 126,
+        "ties": 4,
+        "win_rate": 0.4583,
+        "metrics": {
+          "ndcg@5": 0.7220041482271791,
+          "ndcg@10": 0.7448538001183534,
+          "recall@5": 0.7966666666666665,
+          "recall@10": 0.86
+        },
+        "latency": {
+          "mean_ms": 13.0,
+          "p50_ms": 13.0,
+          "p90_ms": 14.3
+        }
+      },
+      "MSMARCO": {
+        "elo": 1474.22,
+        "elo_std": 46.35,
+        "wins": 87,
+        "losses": 132,
+        "ties": 21,
+        "win_rate": 0.3625,
+        "metrics": {
+          "ndcg@5": 0.9791540618822119,
+          "ndcg@10": 0.9769023536876333,
+          "recall@5": 0.11769248468474777,
+          "recall@10": 0.20870234966362
+        },
+        "latency": {
+          "mean_ms": 12.31,
+          "p50_ms": 12.31,
+          "p90_ms": 13.54
+        }
+      },
+      "ARCD": {
+        "elo": 1357.95,
+        "elo_std": 46.35,
+        "wins": 0,
+        "losses": 232,
+        "ties": 8,
+        "win_rate": 0.0,
+        "metrics": {
+          "ndcg@5": 0.03,
+          "ndcg@10": 0.036309297535714574,
+          "recall@5": 0.04,
+          "recall@10": 0.06
+        },
+        "latency": {
+          "mean_ms": 14.34,
+          "p50_ms": 14.34,
+          "p90_ms": 15.78
+        }
+      }
+    },
+    "comparisons": {
+      "bge-m3": {
+        "wins": 53,
+        "losses": 97,
+        "ties": 10,
+        "total": 160,
+        "win_rate": 0.3312
+      },
+      "cohere-embed-multilingual-v3": {
+        "wins": 39,
+        "losses": 105,
+        "ties": 16,
+        "total": 160,
+        "win_rate": 0.2437
+      },
+      "cohere-embed-v3": {
+        "wins": 48,
+        "losses": 93,
+        "ties": 19,
+        "total": 160,
+        "win_rate": 0.3
+      },
+      "jina-embeddings-v3": {
+        "wins": 55,
+        "losses": 95,
+        "ties": 10,
+        "total": 160,
+        "win_rate": 0.3438
+      },
+      "text-embedding-3-large": {
+        "wins": 28,
+        "losses": 118,
+        "ties": 13,
+        "total": 159,
+        "win_rate": 0.1761
+      },
+      "text-embedding-3-small": {
+        "wins": 39,
+        "losses": 106,
+        "ties": 15,
+        "total": 160,
+        "win_rate": 0.2437
+      },
+      "qwen3-embedding-0.6b": {
+        "wins": 51,
+        "losses": 97,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.3187
+      },
+      "qwen3-embedding-4b": {
+        "wins": 50,
+        "losses": 98,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.3125
+      },
+      "qwen3-embedding-8b": {
+        "wins": 36,
+        "losses": 110,
+        "ties": 14,
+        "total": 160,
+        "win_rate": 0.225
+      },
+      "voyage-3.5": {
+        "wins": 45,
+        "losses": 98,
+        "ties": 16,
+        "total": 159,
+        "win_rate": 0.283
+      },
+      "voyage-3.5-lite": {
+        "wins": 44,
+        "losses": 104,
+        "ties": 12,
+        "total": 160,
+        "win_rate": 0.275
+      },
+      "voyage-3-large": {
+        "wins": 48,
+        "losses": 101,
+        "ties": 10,
+        "total": 159,
+        "win_rate": 0.3019
+      },
+      "jina-embeddings-v5-text-small": {
+        "wins": 15,
+        "losses": 44,
+        "ties": 1,
+        "total": 60
+      }
+    }
+  }
+]

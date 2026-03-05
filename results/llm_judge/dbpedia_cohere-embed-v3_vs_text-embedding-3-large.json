@@ -1,0 +1,95 @@
+{
+  "dataset": "dbpedia",
+  "model_a": "cohere-embed-v3",
+  "model_b": "text-embedding-3-large",
+  "num_queries": 10,
+  "wins_a": 2,
+  "wins_b": 7,
+  "ties": 1,
+  "win_rate_a": 0.2,
+  "win_rate_b": 0.7,
+  "elo_a": 1445.8175864342645,
+  "elo_b": 1554.1824135657355,
+  "comparisons": [
+    {
+      "query_id": "SemSearch_ES-45",
+      "query": "keith urban",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "INEX_LD-20120211",
+      "query": "guitar chord tuning",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "SemSearch_ES-94",
+      "query": "Hugh Downs",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "INEX_XER-73",
+      "query": "magazines about indie-music",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "QALD2_te-25",
+      "query": "Which U.S. state has been admitted latest?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "QALD2_tr-58",
+      "query": "Who produced the most films?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "SemSearch_ES-84",
+      "query": "the dish danielle fishel",
+      "order_swapped": false,
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "raw_response": "TIE"
+    },
+    {
+      "query_id": "INEX_LD-2012313",
+      "query": "John Turturro 1991 Coen Brothers film",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "SemSearch_LS-3",
+      "query": "astronauts who landed on the Moon",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "INEX_LD-2012333",
+      "query": "Prime minister Canada nicknamed Silver-Tongued Laurier longest unbroken term",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    }
+  ]
+}

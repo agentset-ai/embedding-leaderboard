@@ -1,0 +1,47 @@
+{
+  "dataset": "msmarco",
+  "model_a": "voyage-4-large",
+  "model_b": "text-embedding-3-small",
+  "num_queries": 10,
+  "wins_a": 1,
+  "wins_b": 2,
+  "ties": 1,
+  "win_rate_a": 0.25,
+  "win_rate_b": 0.5,
+  "elo_a": 1411.4454046868925,
+  "elo_b": 1588.5545953131075,
+  "comparisons": [
+    {
+      "query_id": "1124210",
+      "query": "tracheids are part of _____.",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "146187",
+      "query": "difference between a mcdouble and a double cheeseburger",
+      "order_swapped": true,
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "raw_response": "TIE"
+    },
+    {
+      "query_id": "47923",
+      "query": "axon terminals or synaptic knob definition",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "443396",
+      "query": "lps laws definition",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    }
+  ]
+}

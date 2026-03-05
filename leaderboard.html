@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedding Model Leaderboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #fff;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            text-align: center;
+            color: #8892b0;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+        .leaderboard {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 100px 100px 100px;
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.08);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8892b0;
+        }
+        .model-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 100px 100px 100px;
+            padding: 16px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.2s;
+            align-items: center;
+        }
+        .model-row:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .model-row:last-child {
+            border-bottom: none;
+        }
+        .rank {
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .rank-1 { color: #ffd700; }
+        .rank-2 { color: #c0c0c0; }
+        .rank-3 { color: #cd7f32; }
+        .model-name {
+            font-weight: 500;
+        }
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 10px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .elo {
+            font-weight: 600;
+            color: #00d4ff;
+        }
+        .win-rate {
+            color: #10b981;
+        }
+        .ndcg {
+            color: #f59e0b;
+        }
+        .highlight-row {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.15), rgba(124, 58, 237, 0.15));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            margin: 4px 8px;
+        }
+        .stats-section {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat-label {
+            color: #8892b0;
+            margin-top: 8px;
+            font-size: 0.9rem;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #8892b0;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Embedding Model Leaderboard</h1>
+        <p class="subtitle">Ranked by Elo score from LLM-as-Judge pairwise comparisons</p>
+
+        <div class="leaderboard">
+            <div class="header-row">
+                <div>Rank</div>
+                <div>Model</div>
+                <div>Elo</div>
+                <div>Win Rate</div>
+                <div>NDCG@10</div>
+            </div>
+
+            <div class="model-row highlight-row">
+                <div class="rank rank-1">#1</div>
+                <div class="model-name">ZeroEntropy zembed-1 <span class="new-badge">NEW</span></div>
+                <div class="elo">1587.65</div>
+                <div class="win-rate">58.9%</div>
+                <div class="ndcg">0.723</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank rank-2">#2</div>
+                <div class="model-name">OpenAI Text Embedding 3 Large</div>
+                <div class="elo">1569.31</div>
+                <div class="win-rate">58.8%</div>
+                <div class="ndcg">0.811</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank rank-3">#3</div>
+                <div class="model-name">Jina Embeddings V5 Text Small</div>
+                <div class="elo">1562.95</div>
+                <div class="win-rate">53.8%</div>
+                <div class="ndcg">0.710</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#4</div>
+                <div class="model-name">Voyage 4</div>
+                <div class="elo">1560.75</div>
+                <div class="win-rate">55.9%</div>
+                <div class="ndcg">0.859</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#5</div>
+                <div class="model-name">Voyage 3 Large</div>
+                <div class="elo">1552.70</div>
+                <div class="win-rate">56.9%</div>
+                <div class="ndcg">0.837</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#6</div>
+                <div class="model-name">Qwen3 Embedding 8B</div>
+                <div class="elo">1513.23</div>
+                <div class="win-rate">51.0%</div>
+                <div class="ndcg">0.818</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#7</div>
+                <div class="model-name">Voyage 3.5</div>
+                <div class="elo">1512.85</div>
+                <div class="win-rate">51.4%</div>
+                <div class="ndcg">0.816</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#8</div>
+                <div class="model-name">Voyage 3.5 Lite</div>
+                <div class="elo">1494.34</div>
+                <div class="win-rate">46.7%</div>
+                <div class="ndcg">0.803</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#9</div>
+                <div class="model-name">Cohere Embed Multilingual V3</div>
+                <div class="elo">1491.43</div>
+                <div class="win-rate">46.0%</div>
+                <div class="ndcg">0.781</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#10</div>
+                <div class="model-name">OpenAI Text Embedding 3 Small</div>
+                <div class="elo">1484.15</div>
+                <div class="win-rate">46.7%</div>
+                <div class="ndcg">0.762</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#11</div>
+                <div class="model-name">Qwen3 Embedding 4B</div>
+                <div class="elo">1483.36</div>
+                <div class="win-rate">44.3%</div>
+                <div class="ndcg">0.802</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#12</div>
+                <div class="model-name">BGE M3</div>
+                <div class="elo">1470.62</div>
+                <div class="win-rate">43.6%</div>
+                <div class="ndcg">0.753</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#13</div>
+                <div class="model-name">Cohere Embed V3</div>
+                <div class="elo">1465.22</div>
+                <div class="win-rate">43.4%</div>
+                <div class="ndcg">0.686</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#14</div>
+                <div class="model-name">Jina Embeddings V3</div>
+                <div class="elo">1448.96</div>
+                <div class="win-rate">42.4%</div>
+                <div class="ndcg">0.766</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#15</div>
+                <div class="model-name">Qwen3 Embedding 0.6B</div>
+                <div class="elo">1428.69</div>
+                <div class="win-rate">40.0%</div>
+                <div class="ndcg">0.751</div>
+            </div>
+
+            <div class="model-row">
+                <div class="rank">#16</div>
+                <div class="model-name">Google Gemini Embedding 004</div>
+                <div class="elo">1367.09</div>
+                <div class="win-rate">29.4%</div>
+                <div class="ndcg">0.585</div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-value">16</div>
+                <div class="stat-label">Models Evaluated</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Datasets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">930</div>
+                <div class="stat-label">zembed-1 Judgments</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">GPT-5</div>
+                <div class="stat-label">LLM Judge</div>
+            </div>
+        </div>
+
+        <p class="footer">
+            Evaluation uses LLM-as-Judge pairwise comparisons with position debiasing.<br>
+            Datasets: FiQA, MSMARCO, SciFact, DBPedia, Business Reports, ARCD, PG
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "dataset": "business-reports",
+  "model_a": "zembed-1",
+  "model_b": "jina-embeddings-v5-text-small",
+  "num_queries": 10,
+  "wins_a": 5,
+  "wins_b": 5,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "q_41",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "q_8",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "q_2",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "q_18",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "q_16",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "q_15",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "q_9",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "q_7",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "q_35",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "q_6",
+      "judgment": "B",
+      "swapped": true
+    }
+  ]
+}

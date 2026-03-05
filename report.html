@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zembed-1 Takes the Top Spot - Embedding Model Leaderboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: #8892b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 50px 0 20px;
+            color: #fff;
+            border-bottom: 2px solid #7c3aed;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            margin: 30px 0 15px;
+            color: #00d4ff;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #b0b0b0;
+        }
+        .highlight {
+            background: rgba(124, 58, 237, 0.2);
+            border-left: 4px solid #7c3aed;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .highlight p {
+            margin: 0;
+            color: #e0e0e0;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-box .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+        .stat-box .label {
+            color: #8892b0;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        .leaderboard {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .lb-header {
+            display: grid;
+            grid-template-columns: 50px 1fr 80px 80px;
+            padding: 15px 20px;
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #8892b0;
+        }
+        .lb-row {
+            display: grid;
+            grid-template-columns: 50px 1fr 80px 80px;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: center;
+        }
+        .lb-row:last-child {
+            border-bottom: none;
+        }
+        .lb-row.highlight-row {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1), rgba(124, 58, 237, 0.1));
+        }
+        .rank { font-weight: 700; }
+        .rank-1 { color: #ffd700; }
+        .rank-2 { color: #c0c0c0; }
+        .rank-3 { color: #cd7f32; }
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #00d4ff, #7c3aed);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: 600;
+        }
+        .dataset-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .dataset-table th, .dataset-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .dataset-table th {
+            background: rgba(255,255,255,0.05);
+            color: #8892b0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .dataset-table td {
+            color: #b0b0b0;
+        }
+        .dataset-table .good { color: #10b981; }
+        .dataset-table .mid { color: #f59e0b; }
+        .dataset-table .low { color: #ef4444; }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .comp-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .comp-card .opponent {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-bottom: 5px;
+        }
+        .comp-card .result {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .comp-card .win { color: #10b981; }
+        .comp-card .loss { color: #ef4444; }
+        .comp-card .close { color: #f59e0b; }
+        code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 0.9em;
+        }
+        .methodology {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .methodology h4 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        .methodology ul {
+            margin-left: 20px;
+            color: #b0b0b0;
+        }
+        .methodology li {
+            margin-bottom: 8px;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+        }
+        a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>zembed-1 Takes the Top Spot</h1>
+        <p class="subtitle">ZeroEntropy's new embedding model ranks #1 in our LLM-as-Judge evaluation across 16 models and 7 datasets</p>
+    </div>
+
+    <div class="container">
+        <p style="font-size: 1.1rem; color: #e0e0e0;">
+            I've been running an embedding model leaderboard that uses GPT-5 as a judge to compare search results from different embedding models. Today I'm adding <strong>zembed-1</strong> from ZeroEntropy, and the results are interesting: it takes the #1 spot by Elo rating, beating established models from OpenAI, Voyage, and Cohere.
+        </p>
+
+        <div class="stat-grid">
+            <div class="stat-box">
+                <div class="value">#1</div>
+                <div class="label">Elo Ranking</div>
+            </div>
+            <div class="stat-box">
+                <div class="value">1587.65</div>
+                <div class="label">Elo Score</div>
+            </div>
+            <div class="stat-box">
+                <div class="value">58.9%</div>
+                <div class="label">Win Rate</div>
+            </div>
+            <div class="stat-box">
+                <div class="value">930</div>
+                <div class="label">Judgments</div>
+            </div>
+        </div>
+
+        <h2>What is zembed-1?</h2>
+        <p>
+            zembed-1 is a 4 billion parameter multilingual embedding model from <a href="https://zeroentropy.dev">ZeroEntropy</a>. It was distilled from their zerank-2 reranker model, which likely explains some of its strong performance in retrieval tasks.
+        </p>
+        <p>
+            The model outputs 2048-dimensional embeddings by default but supports flexible dimension reduction down to 40 dimensions, as well as quantization from 32-bit floats down to binary. This makes it practical for production deployments where you need to balance quality against storage and compute costs.
+        </p>
+
+        <div class="highlight">
+            <p><strong>Key specs:</strong> 4B parameters, 2048 dimensions (flexible to 40), distilled from zerank-2 reranker, supports document/query input types, available via EU API endpoint.</p>
+        </div>
+
+        <h2>The Leaderboard</h2>
+        <p>
+            Here's the current ranking of all 16 models, sorted by Elo score:
+        </p>
+
+        <div class="leaderboard">
+            <div class="lb-header">
+                <div>Rank</div>
+                <div>Model</div>
+                <div>Elo</div>
+                <div>Win %</div>
+            </div>
+            <div class="lb-row highlight-row">
+                <div class="rank rank-1">#1</div>
+                <div>ZeroEntropy zembed-1 <span class="new-badge">NEW</span></div>
+                <div>1587.65</div>
+                <div>58.9%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank rank-2">#2</div>
+                <div>OpenAI text-embedding-3-large</div>
+                <div>1569.31</div>
+                <div>58.8%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank rank-3">#3</div>
+                <div>Jina Embeddings V5 Text Small</div>
+                <div>1562.95</div>
+                <div>53.8%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#4</div>
+                <div>Voyage 4</div>
+                <div>1560.75</div>
+                <div>55.9%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#5</div>
+                <div>Voyage 3 Large</div>
+                <div>1552.70</div>
+                <div>56.9%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#6</div>
+                <div>Qwen3 Embedding 8B</div>
+                <div>1513.23</div>
+                <div>51.0%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#7</div>
+                <div>Voyage 3.5</div>
+                <div>1512.85</div>
+                <div>51.4%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#8</div>
+                <div>Voyage 3.5 Lite</div>
+                <div>1494.34</div>
+                <div>46.7%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#9</div>
+                <div>Cohere Embed Multilingual V3</div>
+                <div>1491.43</div>
+                <div>46.0%</div>
+            </div>
+            <div class="lb-row">
+                <div class="rank">#10</div>
+                <div>OpenAI text-embedding-3-small</div>
+                <div>1484.15</div>
+                <div>46.7%</div>
+            </div>
+        </div>
+        <p style="font-size: 0.9rem; color: #666; text-align: center;">
+            Showing top 10. Full leaderboard includes 16 models.
+        </p>
+
+        <h2>How zembed-1 Performed</h2>
+        <p>
+            zembed-1 achieved a 58.9% win rate across 930 pairwise comparisons, resulting in the highest Elo score of 1587.65. But the aggregate numbers hide some interesting patterns in the per-dataset and per-model results.
+        </p>
+
+        <h3>Per-Dataset Performance</h3>
+        <table class="dataset-table">
+            <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>NDCG@10</th>
+                    <th>Recall@10</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MSMARCO</td>
+                    <td class="good">0.9465</td>
+                    <td>0.2237</td>
+                    <td>Excellent on web search queries</td>
+                </tr>
+                <tr>
+                    <td>ARCD</td>
+                    <td class="good">0.8581</td>
+                    <td class="good">0.9400</td>
+                    <td>Strong on Arabic QA</td>
+                </tr>
+                <tr>
+                    <td>FiQA</td>
+                    <td class="good">0.8545</td>
+                    <td>0.7114</td>
+                    <td>Financial domain expertise</td>
+                </tr>
+                <tr>
+                    <td>DBPedia</td>
+                    <td class="good">0.8106</td>
+                    <td>0.1208</td>
+                    <td>Entity retrieval</td>
+                </tr>
+                <tr>
+                    <td>SciFact</td>
+                    <td class="mid">0.7812</td>
+                    <td class="good">0.9300</td>
+                    <td>Scientific claims</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            The standout performance is on <strong>MSMARCO</strong> (0.9465 NDCG@10) and <strong>FiQA</strong> (0.8545), which aligns with ZeroEntropy's claim that zembed-1 excels on finance, healthcare, and legal domains. The model also performs well on the Arabic dataset (ARCD), suggesting good multilingual capabilities.
+        </p>
+        <p>
+            Note: Business Reports and PG datasets don't have human-annotated relevance judgments, so NDCG metrics aren't calculated for those. They're evaluated via LLM judge only.
+        </p>
+
+        <h3>Head-to-Head Results</h3>
+        <p>
+            Here's how zembed-1 performed against some of the top competitors:
+        </p>
+
+        <div class="comparison-grid">
+            <div class="comp-card">
+                <div class="opponent">vs Gemini Embedding 004</div>
+                <div class="result win">80.0% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Qwen3 0.6B</div>
+                <div class="result win">71.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Cohere Embed V3</div>
+                <div class="result win">66.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Jina V3</div>
+                <div class="result win">66.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Voyage 3.5 Lite</div>
+                <div class="result win">65.0% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs OpenAI Small</div>
+                <div class="result win">60.0% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Qwen3 8B</div>
+                <div class="result win">56.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Voyage 3.5</div>
+                <div class="result win">56.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Jina V5 Small</div>
+                <div class="result close">52.9% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Voyage 3 Large</div>
+                <div class="result close">50.0% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs Voyage 4</div>
+                <div class="result loss">45.7% wins</div>
+            </div>
+            <div class="comp-card">
+                <div class="opponent">vs OpenAI Large</div>
+                <div class="result loss">45.0% wins</div>
+            </div>
+        </div>
+
+        <p>
+            The model dominates against weaker competitors (80% vs Gemini, 71.7% vs Qwen3 0.6B) and holds its own against the mid-tier models. Against the top competitors—Voyage 4 and OpenAI's text-embedding-3-large—it's essentially a coin flip, with zembed-1 slightly behind at 45-46%.
+        </p>
+
+        <div class="highlight">
+            <p>
+                <strong>The interesting thing:</strong> Despite losing head-to-head against Voyage 4 and OpenAI Large, zembed-1 still ends up with the highest Elo. This is because Elo is computed across all pairwise matchups, and zembed-1's strong performance against the mid and lower tier models accumulates enough points to offset the close losses at the top.
+            </p>
+        </div>
+
+        <h2>Methodology</h2>
+        <div class="methodology">
+            <h4>How the Evaluation Works</h4>
+            <ul>
+                <li><strong>LLM-as-Judge:</strong> GPT-5 compares top-5 search results from each model for the same query</li>
+                <li><strong>Position Debiasing:</strong> Results are randomly swapped (A/B positions) to prevent position bias</li>
+                <li><strong>Sample Size:</strong> 10 queries per model pair per dataset (930 total judgments for zembed-1)</li>
+                <li><strong>Elo Calculation:</strong> Standard Elo with K=32, initialized at 1500, 10 iterative passes</li>
+                <li><strong>Datasets:</strong> FiQA, MSMARCO, SciFact, DBPedia, ARCD (with NDCG); Business Reports, PG (LLM judge only)</li>
+            </ul>
+        </div>
+
+        <h2>Takeaways</h2>
+        <p>
+            zembed-1 is a strong new entrant in the embedding model space. Its #1 Elo ranking comes from consistent performance across the board rather than dominance at the top—it beats most models convincingly while staying competitive with the best.
+        </p>
+        <p>
+            If you're building RAG applications in finance, healthcare, or legal domains, zembed-1 is worth evaluating. The flexible dimension reduction (2048 down to 40) also makes it practical for production use cases where you need to trade off quality for efficiency.
+        </p>
+        <p>
+            The main caveat is we don't yet have proper ground truth for long document retrieval. The Business Reports dataset uses synthetic relevance labels, so take those results with a grain of salt.
+        </p>
+
+        <h2>Try It Yourself</h2>
+        <p>
+            The full evaluation code and results are available in this repository. To add your own model to the leaderboard:
+        </p>
+        <ol style="margin-left: 20px; color: #b0b0b0;">
+            <li style="margin-bottom: 10px;">Add the model to <code>model-info.json</code></li>
+            <li style="margin-bottom: 10px;">Implement the embedding client in <code>pipeline/stages/embed.py</code></li>
+            <li style="margin-bottom: 10px;">Add the config to <code>config.yaml</code></li>
+            <li style="margin-bottom: 10px;">Run <code>python pipeline/add_model.py --model your-model</code></li>
+        </ol>
+        <p>
+            See <code>ADD_MODEL.md</code> for detailed instructions.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>Embedding Model Leaderboard &bull; 16 Models &bull; 7 Datasets &bull; LLM-as-Judge Evaluation</p>
+        <p style="margin-top: 10px;">Generated March 2026</p>
+    </div>
+</body>
+</html>

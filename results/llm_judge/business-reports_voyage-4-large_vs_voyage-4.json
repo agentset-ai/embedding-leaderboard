@@ -1,0 +1,95 @@
+{
+  "dataset": "business-reports",
+  "model_a": "voyage-4-large",
+  "model_b": "voyage-4",
+  "num_queries": 10,
+  "wins_a": 3,
+  "wins_b": 6,
+  "ties": 1,
+  "win_rate_a": 0.3,
+  "win_rate_b": 0.6,
+  "elo_a": 1392.6904511590528,
+  "elo_b": 1607.3095488409472,
+  "comparisons": [
+    {
+      "query_id": "q_41",
+      "query": "Sports industry growth driven by diverse fan communities",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_8",
+      "query": "IT cost optimization for insurance companies through digitalization",
+      "order_swapped": true,
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "raw_response": "TIE"
+    },
+    {
+      "query_id": "q_2",
+      "query": "What are the cost reduction strategies in carbon removal technologies?",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_18",
+      "query": "Latino sports fan demographics and US sports economy impact",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_16",
+      "query": "What defines sustainable competitive advantage in SG&A functions?",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q_15",
+      "query": "AI security challenges and protective measures for enterprises",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "q_9",
+      "query": "How do CFOs manage and optimize global business portfolios?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_7",
+      "query": "Latest global economic trends and September 2025 forecasts",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_35",
+      "query": "Asia-Pacific geopolitical tensions and business strategy",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "q_6",
+      "query": "Banking precision strategies versus scale-based approaches",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    }
+  ]
+}

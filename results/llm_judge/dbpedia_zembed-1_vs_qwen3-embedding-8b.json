@@ -1,0 +1,61 @@
+{
+  "dataset": "dbpedia",
+  "model_a": "zembed-1",
+  "model_b": "qwen3-embedding-8b",
+  "num_queries": 10,
+  "wins_a": 5,
+  "wins_b": 5,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "SemSearch_ES-45",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "INEX_LD-20120211",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "SemSearch_ES-94",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "INEX_XER-73",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "QALD2_te-25",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "QALD2_tr-58",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "SemSearch_ES-84",
+      "judgment": "B",
+      "swapped": false
+    },
+    {
+      "query_id": "INEX_LD-2012313",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "SemSearch_LS-3",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "INEX_LD-2012333",
+      "judgment": "A",
+      "swapped": true
+    }
+  ]
+}

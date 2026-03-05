@@ -1,0 +1,61 @@
+{
+  "dataset": "arcd",
+  "model_a": "zembed-1",
+  "model_b": "cohere-embed-v3",
+  "num_queries": 10,
+  "wins_a": 10,
+  "wins_b": 0,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "arcd-q558",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q89",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q25",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q203",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q159",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q142",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q94",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q80",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "arcd-q429",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "arcd-q44",
+      "judgment": "A",
+      "swapped": true
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "dataset": "msmarco",
+  "model_a": "voyage-4-lite",
+  "model_b": "voyage-3.5",
+  "num_queries": 10,
+  "wins_a": 2,
+  "wins_b": 4,
+  "ties": 0,
+  "win_rate_a": 0.3333333333333333,
+  "win_rate_b": 0.6666666666666666,
+  "elo_a": 1379.8479934907368,
+  "elo_b": 1620.1520065092632,
+  "comparisons": [
+    {
+      "query_id": "359349",
+      "query": "how to find the midsegment of a trapezoid",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "264014",
+      "query": "how long is life cycle of flea",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "148538",
+      "query": "difference between rn and bsn",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "131843",
+      "query": "definition of a sigmet",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "1114646",
+      "query": "what is famvir prescribed for",
+      "order_swapped": false,
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "130510",
+      "query": "definition declaratory judgment",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    }
+  ]
+}

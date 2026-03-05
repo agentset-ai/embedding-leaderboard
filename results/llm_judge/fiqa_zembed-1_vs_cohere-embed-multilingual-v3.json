@@ -1,0 +1,61 @@
+{
+  "dataset": "fiqa",
+  "model_a": "zembed-1",
+  "model_b": "cohere-embed-multilingual-v3",
+  "num_queries": 10,
+  "wins_a": 7,
+  "wins_b": 3,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "7188",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "864",
+      "judgment": "A",
+      "swapped": true
+    },
+    {
+      "query_id": "4105",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "7071",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "1230",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "2183",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "8779",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "1948",
+      "judgment": "A",
+      "swapped": false
+    },
+    {
+      "query_id": "9808",
+      "judgment": "B",
+      "swapped": true
+    },
+    {
+      "query_id": "766",
+      "judgment": "A",
+      "swapped": true
+    }
+  ]
+}

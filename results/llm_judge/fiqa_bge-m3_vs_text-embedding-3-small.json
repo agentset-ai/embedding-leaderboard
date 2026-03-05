@@ -1,0 +1,95 @@
+{
+  "dataset": "fiqa",
+  "model_a": "bge-m3",
+  "model_b": "text-embedding-3-small",
+  "num_queries": 10,
+  "wins_a": 8,
+  "wins_b": 2,
+  "ties": 0,
+  "win_rate_a": 0.8,
+  "win_rate_b": 0.2,
+  "elo_a": 1565.2119545938288,
+  "elo_b": 1434.7880454061712,
+  "comparisons": [
+    {
+      "query_id": "7188",
+      "query": "What explains the enormous increase in gold price in the early 21st century?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "864",
+      "query": "Why use accounting software like Quickbooks instead of Excel spreadsheets?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "4105",
+      "query": "As an investor what are side effects of Quantitative Easing in US and in EU?",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "7071",
+      "query": "ESPP strategy - Sell right away or hold?",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "1230",
+      "query": "How does Walmart account their expired food",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "2183",
+      "query": "Why are there many small banks and more banks in the U.S.?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "8779",
+      "query": "How does a defined contribution plan work",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "1948",
+      "query": "Which colors can one use to fill out a check in the US?",
+      "order_swapped": false,
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "raw_response": "A"
+    },
+    {
+      "query_id": "9808",
+      "query": "Selling To Close",
+      "order_swapped": true,
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "raw_response": "B"
+    },
+    {
+      "query_id": "766",
+      "query": "Will the ex-homeowner still owe money after a foreclosure?",
+      "order_swapped": true,
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "raw_response": "A"
+    }
+  ]
+}
