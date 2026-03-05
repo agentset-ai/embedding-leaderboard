@@ -134,6 +134,11 @@ embedders:
     model: "zembed-1"
     api_key_env: "ZEMBED_API_KEY"
 
+  - name: "kanon-2"
+    provider: "isaacus"
+    model: "kanon-2-embedder"
+    api_key_env: "ISAACUS_API_KEY"
+
 # Evaluation configuration
 evaluation:
   k_values: [5, 10]

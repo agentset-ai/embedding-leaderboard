@@ -158,5 +158,15 @@
     "release_date": "2026-02-01",
     "dimension": 2048,
     "about_model": "4B parameter multilingual embedding model distilled from zerank-2 reranker. Supports dimension reduction (2048 to 40) and quantization (32-bit to binary). Strong performance on finance, healthcare, and legal domains."
+  },
+  {
+    "name": "kanon-2",
+    "display_name": "Kanon 2",
+    "provider": "Isaacus",
+    "license": "Apache 2.0",
+    "cost_per_1m_tokens": 0.05,
+    "release_date": "2025-10-29",
+    "dimension": 1024,
+    "about_model": "Isaacus Kanon 2 embedding model optimized for legal and regulatory text retrieval."
   }
 ]

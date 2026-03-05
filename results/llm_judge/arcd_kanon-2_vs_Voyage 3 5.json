@@ -1,0 +1,71 @@
+{
+  "dataset": "arcd",
+  "model_a": "kanon-2",
+  "model_b": "Voyage 3 5",
+  "num_queries": 10,
+  "wins_a": 0,
+  "wins_b": 10,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "arcd-q558",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q89",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q25",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q203",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q159",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q142",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q94",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q80",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q429",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q44",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    }
+  ]
+}

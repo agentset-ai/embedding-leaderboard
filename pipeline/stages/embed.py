@@ -460,6 +460,77 @@ class ZeroEntropyClient:
         return np.array(embeddings), latencies
 
 
+class IsaacusClient:
+    """Isaacus embedding client (Kanon 2 Embedder)."""
+
+    def __init__(self, api_key: str, model_name: str = "kanon-2-embedder"):
+        self.api_key = api_key
+        self.model_name = model_name
+        self.api_url = "https://api.isaacus.com/v1/embeddings"
+
+    def _request_with_retry(self, payload: dict, max_retries: int = 3, timeout: int = 120) -> dict:
+        """Make request with retry logic for timeouts."""
+        for attempt in range(max_retries):
+            try:
+                response = requests.post(
+                    self.api_url,
+                    headers={
+                        "Authorization": f"Bearer {self.api_key}",
+                        "Content-Type": "application/json"
+                    },
+                    json=payload,
+                    timeout=timeout
+                )
+                if response.status_code == 408 or response.status_code >= 500:
+                    wait_time = (attempt + 1) * 10
+                    print(f"\n  Retry {attempt + 1}/{max_retries} after {response.status_code}, waiting {wait_time}s...")
+                    time.sleep(wait_time)
+                    continue
+                if response.status_code != 200:
+                    print(f"\nAPI Error: {response.status_code} {response.text}")
+                response.raise_for_status()
+                return response.json()
+            except requests.exceptions.Timeout:
+                wait_time = (attempt + 1) * 10
+                print(f"\n  Timeout, retry {attempt + 1}/{max_retries}, waiting {wait_time}s...")
+                time.sleep(wait_time)
+        raise Exception(f"Failed after {max_retries} retries")
+
+    def embed_corpus(self, texts: List[str], batch_size: int = 64) -> np.ndarray:
+        """Embed corpus texts with progress bar."""
+        embeddings = []
+        for i in tqdm(range(0, len(texts), batch_size), desc=f"Embedding corpus ({self.model_name})"):
+            batch = texts[i:i + batch_size]
+            batch = [text if text and text.strip() else "empty" for text in batch]
+            result = self._request_with_retry({
+                "model": self.model_name,
+                "texts": batch,
+                "task": "retrieval/document"
+            })
+            batch_embeddings = [item["embedding"] for item in result["embeddings"]]
+            embeddings.extend(batch_embeddings)
+        return np.array(embeddings)
+
+    def embed_queries(self, queries: List[str]) -> Tuple[np.ndarray, List[float]]:
+        """Embed queries and return embeddings + latencies."""
+        embeddings = []
+        latencies = []
+
+        for query in tqdm(queries, desc=f"Embedding queries ({self.model_name})"):
+            start_time = time.time()
+            result = self._request_with_retry({
+                "model": self.model_name,
+                "texts": [query],
+                "task": "retrieval/query"
+            })
+            latency = time.time() - start_time
+            embedding = result["embeddings"][0]["embedding"]
+            embeddings.append(embedding)
+            latencies.append(latency)
+
+        return np.array(embeddings), latencies
+
+
 def get_client(provider: str, model_name: str, api_key: str):
     """Factory function to get embedding client."""
     if provider == "voyage":
@@ -476,6 +547,8 @@ def get_client(provider: str, model_name: str, api_key: str):
         return DeepInfraClient(api_key, model_name)
     elif provider == "zeroentropy":
         return ZeroEntropyClient(api_key, model_name)
+    elif provider == "isaacus":
+        return IsaacusClient(api_key, model_name)
     else:
         raise ValueError(f"Unknown provider: {provider}")
 

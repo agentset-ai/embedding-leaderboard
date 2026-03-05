@@ -101,6 +101,7 @@ def get_embedding_client(model_name: str, model_info: Dict):
         "qwen": "deepinfra",
         "baai": "deepinfra",
         "zeroentropy": "zeroentropy",
+        "isaacus": "isaacus",
     }
 
     config_provider = provider_map.get(provider, provider)
@@ -123,6 +124,7 @@ def get_embedding_client(model_name: str, model_info: Dict):
         "qwen3-embedding-0.6b": "Alibaba-NLP/gte-Qwen2-0.5B-instruct",
         "bge-m3": "BAAI/bge-m3",
         "zembed-1": "zembed-1",
+        "kanon-2": "kanon-2-embedder",
     }
 
     api_model = model_map.get(model_name, model_name)
@@ -136,6 +138,7 @@ def get_embedding_client(model_name: str, model_info: Dict):
         "google": "GOOGLE_API_KEY",
         "deepinfra": "DEEPINFRA_API_KEY",
         "zeroentropy": "ZEMBED_API_KEY",
+        "isaacus": "ISAACUS_API_KEY",
     }
 
     api_key = os.getenv(api_key_env_map.get(config_provider, ""))
@@ -212,6 +215,7 @@ def run_llm_judge(
     num_queries: int = 10,
     top_k: int = 5,
     truncate_length: int = 200,
+    other_model_file_name: str = None,
 ) -> Dict:
     """Run LLM judge comparison between two models"""
     from openai import OpenAI
@@ -237,8 +241,9 @@ def run_llm_judge(
         }
 
     # Load other model's embeddings
-    corpus_emb_other = np.load(other_embeddings_path / f"corpus_{other_model}.npy")
-    query_emb_other = np.load(other_embeddings_path / f"queries_{other_model}.npy")
+    emb_file_name = other_model_file_name or other_model
+    corpus_emb_other = np.load(other_embeddings_path / f"corpus_{emb_file_name}.npy")
+    query_emb_other = np.load(other_embeddings_path / f"queries_{emb_file_name}.npy")
 
     corpus_emb_new, query_emb_new = new_embeddings
 
@@ -495,6 +500,13 @@ def main():
         print(f"  Embedding queries...")
         query_emb, latencies = client.embed_queries(query_texts)
 
+        # Save embeddings to disk
+        emb_save_dir = Path("data/embeddings") / dataset_name
+        emb_save_dir.mkdir(parents=True, exist_ok=True)
+        np.save(emb_save_dir / f"corpus_{args.model}.npy", corpus_emb)
+        np.save(emb_save_dir / f"queries_{args.model}.npy", query_emb)
+        print(f"  Saved embeddings to {emb_save_dir}")
+
         all_latencies.extend(latencies)
 
         # Calculate metrics
@@ -522,7 +534,32 @@ def main():
         # Run LLM judge against existing models
         if existing_models:
             print(f"  Running LLM judge comparisons...")
+
+            # Map display names to file names
+            display_to_file = {
+                "ZeroEntropy zembed-1": "zembed-1",
+                "Openai Text Embedding 3 Large": "text-embedding-3-large",
+                "Openai Text Embedding 3 Small": "text-embedding-3-small",
+                "Gemini Embedding 004": "text-embedding-004",
+                "Voyage 4": "voyage-4",
+                "Voyage 3 Large": "voyage-3-large",
+                "Voyage 3 5": "voyage-3.5",
+                "Voyage 3 5 Lite": "voyage-3.5-lite",
+                "Cohere Embed V3": "cohere-embed-v3",
+                "Cohere Embed Multilingual V3": "cohere-embed-multilingual-v3",
+                "Jina Embeddings V3": "jina-embeddings-v3",
+                "Jina Embeddings V5 Text Small": "jina-embeddings-v5-text-small",
+                "Qwen3 Embedding 8B Deepinfra": "qwen3-embedding-8b",
+                "Qwen3 Embedding 4B Deepinfra": "qwen3-embedding-4b",
+                "Qwen3 Embedding 0 6B Deepinfra": "qwen3-embedding-0.6b",
+                "Bge M3 Deepinfra": "bge-m3",
+                "Kanon 2": "kanon-2",
+            }
+
             for other_model in existing_models:
+                # Get file name for model
+                file_name = display_to_file.get(other_model, other_model)
+
                 # Find embeddings path for other model
                 emb_path = None
                 for possible_dir in [
@@ -531,7 +568,7 @@ def main():
                     results_dir.parent / "embedder-leaderboard" / "embeddings" / "20260206_120931",
                 ]:
                     test_path = possible_dir / dataset_name
-                    if test_path.exists() and (test_path / f"corpus_{other_model}.npy").exists():
+                    if test_path.exists() and (test_path / f"corpus_{file_name}.npy").exists():
                         emb_path = test_path
                         break
 
@@ -551,6 +588,7 @@ def main():
                     corpus_ids,
                     query_ids,
                     llm_judge_dir,
+                    other_model_file_name=file_name,
                 )
                 print(f"W:{result['wins_a']} L:{result['wins_b']} T:{result['ties']}")
 

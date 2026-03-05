@@ -1,0 +1,71 @@
+{
+  "dataset": "msmarco",
+  "model_a": "kanon-2",
+  "model_b": "Qwen3 Embedding 0 6B Deepinfra",
+  "num_queries": 10,
+  "wins_a": 5,
+  "wins_b": 5,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "1124210",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "146187",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "47923",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "443396",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "359349",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "264014",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "148538",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "131843",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "1114646",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "130510",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    }
+  ]
+}

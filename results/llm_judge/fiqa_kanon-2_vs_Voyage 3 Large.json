@@ -1,0 +1,71 @@
+{
+  "dataset": "fiqa",
+  "model_a": "kanon-2",
+  "model_b": "Voyage 3 Large",
+  "num_queries": 10,
+  "wins_a": 10,
+  "wins_b": 0,
+  "ties": 0,
+  "comparisons": [
+    {
+      "query_id": "7188",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "864",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "4105",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "7071",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "1230",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "2183",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "8779",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "1948",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "9808",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "766",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    }
+  ]
+}
