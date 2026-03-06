@@ -378,17 +378,41 @@ def run_llm_judge(
 
 def calculate_elo(benchmarks: List[Dict], initial: int = 1500, k: int = 32) -> Dict[str, float]:
     """Calculate Elo scores from all pairwise comparisons"""
-    # Initialize scores
+    # Build mapping from internal model names to display names
+    # Comparisons use internal names as keys, but benchmark["name"] uses display names
+    internal_to_display = {
+        "zembed-1": "ZeroEntropy zembed-1",
+        "text-embedding-3-large": "Openai Text Embedding 3 Large",
+        "text-embedding-3-small": "Openai Text Embedding 3 Small",
+        "text-embedding-004": "Gemini Embedding 004",
+        "voyage-4": "Voyage 4",
+        "voyage-3-large": "Voyage 3 Large",
+        "voyage-3.5": "Voyage 3 5",
+        "voyage-3.5-lite": "Voyage 3 5 Lite",
+        "cohere-embed-v3": "Cohere Embed V3",
+        "cohere-embed-multilingual-v3": "Cohere Embed Multilingual V3",
+        "jina-embeddings-v3": "Jina Embeddings V3",
+        "jina-embeddings-v5-text-small": "Jina Embeddings V5 Text Small",
+        "qwen3-embedding-8b": "Qwen3 Embedding 8B Deepinfra",
+        "qwen3-embedding-4b": "Qwen3 Embedding 4B Deepinfra",
+        "qwen3-embedding-0.6b": "Qwen3 Embedding 0 6B Deepinfra",
+        "bge-m3": "Bge M3 Deepinfra",
+        "kanon-2": "Kanon 2",
+    }
+
+    # Initialize scores using display names
     elo = {b["name"]: float(initial) for b in benchmarks}
 
     # Gather all comparisons
     comparisons = []
     for b in benchmarks:
-        for other, data in b.get("comparisons", {}).items():
-            if other in elo:
+        for other_internal, data in b.get("comparisons", {}).items():
+            # Map internal name to display name
+            other_display = internal_to_display.get(other_internal, other_internal)
+            if other_display in elo:
                 comparisons.append({
                     "model_a": b["name"],
-                    "model_b": other,
+                    "model_b": other_display,
                     "wins_a": data.get("wins", 0),
                     "wins_b": data.get("losses", 0),
                     "ties": data.get("ties", 0),
@@ -462,6 +486,7 @@ def main():
         "name": model_info["display_name"],
         "overall": {
             "elo": 1500.0,
+            "elo_std": 0.0,
             "wins": 0,
             "losses": 0,
             "ties": 0,
@@ -514,20 +539,43 @@ def main():
         metrics = calculate_metrics(query_emb, corpus_emb, query_ids, corpus_ids, qrels)
         all_ndcg_10.append(metrics["ndcg@10"])
 
-        # Store dataset results
-        new_benchmark["by_dataset"][dataset_name.upper().replace("-", "_")] = {
+        # Map dataset names to canonical display names
+        dataset_display_map = {
+            "pg": "PG",
+            "business-reports": "business_reports",
+            "dbpedia": "DBPedia",
+            "fiqa": "FiQa",
+            "scifact": "SciFact",
+            "msmarco": "MSMARCO",
+            "arcd": "ARCD",
+        }
+        dataset_key = dataset_display_map.get(dataset_name, dataset_name)
+
+        # Store dataset results with proper structure matching landing-site format
+        dataset_entry = {
             "elo": 1500.0,
+            "elo_std": 0.0,
             "wins": 0,
             "losses": 0,
             "ties": 0,
             "win_rate": 0.0,
-            "metrics": metrics,
             "latency": {
-                "mean_ms": float(np.mean(latencies)) * 1000,
-                "p50_ms": float(np.percentile(latencies, 50)) * 1000,
-                "p90_ms": float(np.percentile(latencies, 90)) * 1000,
+                "mean_ms": round(float(np.mean(latencies)) * 1000, 2),
+                "p50_ms": round(float(np.percentile(latencies, 50)) * 1000, 2),
+                "p90_ms": round(float(np.percentile(latencies, 90)) * 1000, 2),
             },
         }
+
+        # Add metrics for datasets that have ground truth (qrels)
+        if metrics:
+            dataset_entry["metrics"] = {
+                "ndcg@5": metrics.get("ndcg@5", 0.0),
+                "recall@5": metrics.get("recall@5", 0.0),
+                "ndcg@10": metrics.get("ndcg@10", 0.0),
+                "recall@10": metrics.get("recall@10", 0.0),
+            }
+
+        new_benchmark["by_dataset"][dataset_key] = dataset_entry
 
         print(f"  NDCG@10: {metrics['ndcg@10']:.4f}, Recall@10: {metrics['recall@10']:.4f}")
 
@@ -592,13 +640,28 @@ def main():
                 )
                 print(f"W:{result['wins_a']} L:{result['wins_b']} T:{result['ties']}")
 
-                # Aggregate comparisons
-                if other_model not in new_benchmark["comparisons"]:
-                    new_benchmark["comparisons"][other_model] = {"wins": 0, "losses": 0, "ties": 0, "total": 0}
-                new_benchmark["comparisons"][other_model]["wins"] += result["wins_a"]
-                new_benchmark["comparisons"][other_model]["losses"] += result["wins_b"]
-                new_benchmark["comparisons"][other_model]["ties"] += result["ties"]
-                new_benchmark["comparisons"][other_model]["total"] += result["wins_a"] + result["wins_b"] + result["ties"]
+                # Update per-dataset wins/losses/ties
+                new_benchmark["by_dataset"][dataset_key]["wins"] += result["wins_a"]
+                new_benchmark["by_dataset"][dataset_key]["losses"] += result["wins_b"]
+                new_benchmark["by_dataset"][dataset_key]["ties"] += result["ties"]
+                ds_total = (new_benchmark["by_dataset"][dataset_key]["wins"] +
+                           new_benchmark["by_dataset"][dataset_key]["losses"] +
+                           new_benchmark["by_dataset"][dataset_key]["ties"])
+                if ds_total > 0:
+                    new_benchmark["by_dataset"][dataset_key]["win_rate"] = round(new_benchmark["by_dataset"][dataset_key]["wins"] / ds_total, 4)
+
+                # Aggregate comparisons using internal model name as key (e.g., "bge-m3" not "Bge M3 Deepinfra")
+                comparison_key = file_name
+                if comparison_key not in new_benchmark["comparisons"]:
+                    new_benchmark["comparisons"][comparison_key] = {"wins": 0, "losses": 0, "ties": 0, "total": 0, "win_rate": 0.0}
+                new_benchmark["comparisons"][comparison_key]["wins"] += result["wins_a"]
+                new_benchmark["comparisons"][comparison_key]["losses"] += result["wins_b"]
+                new_benchmark["comparisons"][comparison_key]["ties"] += result["ties"]
+                new_benchmark["comparisons"][comparison_key]["total"] += result["wins_a"] + result["wins_b"] + result["ties"]
+                # Update win_rate
+                comp_total = new_benchmark["comparisons"][comparison_key]["total"]
+                if comp_total > 0:
+                    new_benchmark["comparisons"][comparison_key]["win_rate"] = round(new_benchmark["comparisons"][comparison_key]["wins"] / comp_total, 4)
 
                 # Update overall stats
                 new_benchmark["overall"]["wins"] += result["wins_a"]
@@ -609,10 +672,10 @@ def main():
     # Calculate overall stats
     total = new_benchmark["overall"]["wins"] + new_benchmark["overall"]["losses"] + new_benchmark["overall"]["ties"]
     if total > 0:
-        new_benchmark["overall"]["win_rate"] = new_benchmark["overall"]["wins"] / total
+        new_benchmark["overall"]["win_rate"] = round(new_benchmark["overall"]["wins"] / total, 4)
 
-    new_benchmark["overall"]["avg_latency_ms"] = float(np.mean(all_latencies)) * 1000 if all_latencies else 0
-    new_benchmark["overall"]["avg_ndcg_10"] = float(np.mean(all_ndcg_10)) if all_ndcg_10 else 0
+    new_benchmark["overall"]["avg_latency_ms"] = round(float(np.mean(all_latencies)) * 1000, 2) if all_latencies else 0.0
+    new_benchmark["overall"]["avg_ndcg_10"] = round(float(np.mean(all_ndcg_10)), 4) if all_ndcg_10 else 0.0
 
     # Add to benchmarks
     benchmarks.append(new_benchmark)
