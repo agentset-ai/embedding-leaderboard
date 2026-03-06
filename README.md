@@ -2,15 +2,7 @@
 
 A benchmark for comparing embedding models using Elo ratings from LLM-as-judge pairwise comparisons.
 
-## Overview
-
-- **16 embedding models** from OpenAI, Voyage AI, Cohere, Jina AI, Google, BAAI, Qwen, and ZeroEntropy
-- **7 evaluation datasets**: FiQa, MSMARCO, SciFact, DBPedia, business-reports, ARCD, PG
-- **Metrics**: NDCG@5, NDCG@10, Recall@5, Recall@10, Elo ratings
-
-## Results
-
-View current results in `results/benchmarks.json` or run the pipeline to generate `report.html`.
+View current results in `results/benchmarks.json`
 
 ## Quick Start
 
