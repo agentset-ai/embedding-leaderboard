@@ -150,6 +150,16 @@
     "about_model": "677M parameter multilingual embedding model built on Qwen3-0.6B-Base with 32K token context length supporting 119+ languages. Features four task-specific LoRA adapters for retrieval, text-matching, clustering, and classification, with Matryoshka learning enabling dimension reduction down to 32. Achieves 67.0 average on MMTEB, best among sub-1B multilingual models."
   },
   {
+    "name": "gemini-embedding-2-preview",
+    "display_name": "Gemini Embedding 2",
+    "provider": "Google",
+    "license": "Proprietary",
+    "cost_per_1m_tokens": 0.0,
+    "release_date": "2026-03-10",
+    "dimension": 3072,
+    "about_model": "Google's first natively multimodal embedding model built on Gemini architecture, supporting text (8,192 tokens), images, video, audio, and documents in a single unified embedding space across 100+ languages. Features Matryoshka Representation Learning with flexible output dimensions (3072/1536/768). Available in Public Preview via Gemini API."
+  },
+  {
     "name": "zembed-1",
     "display_name": "zembed-1",
     "provider": "ZeroEntropy",

@@ -64,6 +64,11 @@ embedders:
     model: "text-embedding-004"
     api_key_env: "GOOGLE_API_KEY"
 
+  - name: "gemini-embedding-2-preview"
+    provider: "google"
+    model: "gemini-embedding-2-preview"
+    api_key_env: "GOOGLE_API_KEY"
+
   # Voyage AI
   - name: "voyage-3-large"
     provider: "voyage"

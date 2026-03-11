@@ -381,7 +381,7 @@ def calculate_elo(benchmarks: List[Dict], initial: int = 1500, k: int = 32) -> D
     # Build mapping from internal model names to display names
     # Comparisons use internal names as keys, but benchmark["name"] uses display names
     internal_to_display = {
-        "zembed-1": "ZeroEntropy zembed-1",
+        "zembed-1": "zembed-1",
         "text-embedding-3-large": "Openai Text Embedding 3 Large",
         "text-embedding-3-small": "Openai Text Embedding 3 Small",
         "text-embedding-004": "Gemini Embedding 004",

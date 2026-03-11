@@ -277,31 +277,34 @@ class GoogleClient:
     def __init__(self, api_key: str, model_name: str = "text-embedding-004"):
         self.api_key = api_key
         self.model_name = model_name
-        self.api_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:embedContent"
+        # Use batchEmbedContents for efficiency; fall back to embedContent for older models
+        self._batch_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:batchEmbedContents"
+        self._single_url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:embedContent"
 
-    def _embed_single(self, text: str, task_type: str) -> List[float]:
-        """Embed a single text."""
+    def _embed_batch(self, texts: List[str], task_type: str) -> List[List[float]]:
+        """Embed a batch of texts via batchEmbedContents."""
+        requests_list = [
+            {"model": f"models/{self.model_name}", "content": {"parts": [{"text": t}]}, "taskType": task_type}
+            for t in texts
+        ]
         response = requests.post(
-            f"{self.api_url}?key={self.api_key}",
+            self._batch_url,
+            params={"key": self.api_key},
             headers={"Content-Type": "application/json"},
-            json={
-                "model": f"models/{self.model_name}",
-                "content": {"parts": [{"text": text}]},
-                "taskType": task_type
-            }
+            json={"requests": requests_list}
         )
         if response.status_code != 200:
             print(f"\nAPI Error: {response.status_code} {response.text}")
         response.raise_for_status()
-        return response.json()["embedding"]["values"]
+        return [item["values"] for item in response.json()["embeddings"]]
 
-    def embed_corpus(self, texts: List[str], batch_size: int = 1) -> np.ndarray:
-        """Embed corpus texts (one at a time for Google API)."""
+    def embed_corpus(self, texts: List[str], batch_size: int = 100) -> np.ndarray:
+        """Embed corpus texts in batches."""
         embeddings = []
-        for text in tqdm(texts, desc=f"Embedding corpus ({self.model_name})"):
-            text = text if text and text.strip() else " "
-            embedding = self._embed_single(text, "RETRIEVAL_DOCUMENT")
-            embeddings.append(embedding)
+        for i in tqdm(range(0, len(texts), batch_size), desc=f"Embedding corpus ({self.model_name})"):
+            batch = texts[i:i + batch_size]
+            batch = [t if t and t.strip() else " " for t in batch]
+            embeddings.extend(self._embed_batch(batch, "RETRIEVAL_DOCUMENT"))
         return np.array(embeddings)
 
     def embed_queries(self, queries: List[str]) -> Tuple[np.ndarray, List[float]]:
@@ -311,10 +314,9 @@ class GoogleClient:
 
         for query in tqdm(queries, desc=f"Embedding queries ({self.model_name})"):
             start_time = time.time()
-            embedding = self._embed_single(query, "RETRIEVAL_QUERY")
-            latency = time.time() - start_time
-            embeddings.append(embedding)
-            latencies.append(latency)
+            result = self._embed_batch([query], "RETRIEVAL_QUERY")
+            latencies.append(time.time() - start_time)
+            embeddings.append(result[0])
 
         return np.array(embeddings), latencies
 

@@ -1,0 +1,71 @@
+{
+  "dataset": "arcd",
+  "model_a": "gemini-embedding-2-preview",
+  "model_b": "Openai Text Embedding 3 Large",
+  "num_queries": 10,
+  "wins_a": 5,
+  "wins_b": 4,
+  "ties": 1,
+  "comparisons": [
+    {
+      "query_id": "arcd-q558",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q89",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q25",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q203",
+      "llm_judgment": "A",
+      "actual_judgment": "B",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q159",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q142",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q94",
+      "llm_judgment": "B",
+      "actual_judgment": "B",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q80",
+      "llm_judgment": "A",
+      "actual_judgment": "A",
+      "order_swapped": false
+    },
+    {
+      "query_id": "arcd-q429",
+      "llm_judgment": "B",
+      "actual_judgment": "A",
+      "order_swapped": true
+    },
+    {
+      "query_id": "arcd-q44",
+      "llm_judgment": "TIE",
+      "actual_judgment": "TIE",
+      "order_swapped": true
+    }
+  ]
+}
